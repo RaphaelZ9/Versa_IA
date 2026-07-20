@@ -8,8 +8,7 @@ Núcleo da Inteligência Artificial da plataforma.
 Responsabilidades
 -----------------
 - Receber solicitações do Kernel.
-- Solicitar a construção do contexto.
-- Transformar o contexto em mensagens para o modelo.
+- Transformar um contexto pronto em mensagens para o modelo.
 - Delegar chamadas ao ModelManager.
 - Retornar um AIResponse.
 
@@ -21,7 +20,6 @@ from __future__ import annotations
 from typing import Optional
 
 from app.ai.model_manager import ModelManager
-from app.ai_core.context.context_builder import ContextBuilder
 from app.ai_core.context.context_package import ContextPackage
 from app.ai_core.prompt.prompt_builder import PromptBuilder
 from app.core.logging.log_manager import LogManager
@@ -46,8 +44,6 @@ class AICore:
             if model_manager is not None
             else ModelManager()
         )
-
-        self.context_builder = ContextBuilder()
 
         self.prompt_builder = PromptBuilder()
 
@@ -79,19 +75,23 @@ class AICore:
 
     def chat(
         self,
+        *,
         message: str,
-        system_prompt: Optional[str] = None,
+        context: ContextPackage,
     ) -> AIResponse:
         """
         Processa uma mensagem enviada pelo usuário.
+
+        Args:
+            message:
+                Mensagem enviada pelo usuário.
+
+            context:
+                Contexto pronto para a requisição atual.
         """
 
         if not self._initialized:
             self.initialize()
-
-        context = self._build_context(
-            system_prompt=system_prompt,
-        )
 
         messages = self.prompt_builder.build(
             user_message=message,
@@ -134,29 +134,6 @@ class AICore:
             )
 
             return response
-
-    # =========================================================================
-    # Context
-    # =========================================================================
-
-    def _build_context(
-        self,
-        *,
-        system_prompt: Optional[str],
-    ) -> ContextPackage:
-        """
-        Constrói o contexto utilizado para a requisição atual.
-
-        O parâmetro system_prompt é mantido como sobrescrita opcional
-        por compatibilidade com a API pública atual.
-        """
-
-        context = self.context_builder.build()
-
-        if system_prompt is not None:
-            context.system_prompt = system_prompt
-
-        return context
 
     # =========================================================================
     # Generate

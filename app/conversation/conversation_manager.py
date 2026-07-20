@@ -5,7 +5,8 @@ Arquivo:
 conversation_manager.py
 
 Responsabilidade:
-Orquestrar todas as operações relacionadas às conversas.
+Orquestrar as operações relacionadas às conversas e construir
+o contexto da requisição.
 
 O ConversationManager representa a interface pública do
 módulo Conversation.
@@ -15,6 +16,8 @@ Autor: Raphael Wilson
 
 from __future__ import annotations
 
+from app.ai_core.context.context_builder import ContextBuilder
+from app.ai_core.context.context_package import ContextPackage
 from app.conversation.repositories.base_conversation_repository import (
     BaseConversationRepository,
 )
@@ -56,6 +59,8 @@ class ConversationManager:
             self._repository
         )
 
+        self._context_builder = ContextBuilder()
+
     @property
     def repository(self) -> BaseConversationRepository:
         """
@@ -71,6 +76,29 @@ class ConversationManager:
         """
 
         return self._service
+
+    # ==========================================================
+    # Context
+    # ==========================================================
+
+    def build_context(
+        self,
+        *,
+        system_prompt: str | None = None,
+    ) -> ContextPackage:
+        """
+        Constrói o contexto utilizado na requisição atual.
+
+        O parâmetro system_prompt é mantido como sobrescrita opcional
+        por compatibilidade com a API pública do Kernel.
+        """
+
+        context = self._context_builder.build()
+
+        if system_prompt is not None:
+            context.system_prompt = system_prompt
+
+        return context
 
     # ==========================================================
     # CRUD

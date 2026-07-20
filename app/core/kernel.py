@@ -9,14 +9,9 @@ Responsabilidades
 -----------------
 - Inicializar os módulos centrais da plataforma.
 - Gerenciar o ciclo de vida da aplicação.
-- Coordenar o AI Core.
 - Coordenar o Conversation Manager.
+- Delegar o contexto pronto ao AI Core.
 
-IMPORTANTE
-
-O Kernel NÃO implementa regras de negócio.
-
-Toda a inteligência pertence ao AI Core.
 ===============================================================================
 """
 
@@ -36,47 +31,47 @@ class VersaKernel:
     """
 
     def __init__(self) -> None:
-
         self.logger = LogManager.kernel()
 
         self._initialized = False
 
         self.ai_core: Optional[AICore] = None
 
-        self.conversation_manager: Optional[ConversationManager] = None
+        self.conversation_manager: Optional[
+            ConversationManager
+        ] = None
 
     # =========================================================================
     # Inicialização
     # =========================================================================
 
     def initialize(self) -> None:
-
         if self._initialized:
             return
 
-        self.logger.info("Inicializando Versa Kernel...")
-
-        # ---------------------------------------------------------------------
-        # AI Core
-        # ---------------------------------------------------------------------
+        self.logger.info(
+            "Inicializando Versa Kernel..."
+        )
 
         self.ai_core = AICore()
 
         self.ai_core.initialize()
 
-        self.logger.info("AI Core iniciado.")
-
-        # ---------------------------------------------------------------------
-        # Conversation
-        # ---------------------------------------------------------------------
+        self.logger.info(
+            "AI Core iniciado."
+        )
 
         self.conversation_manager = ConversationManager()
 
-        self.logger.info("Conversation Manager iniciado.")
+        self.logger.info(
+            "Conversation Manager iniciado."
+        )
 
         self._initialized = True
 
-        self.logger.info("Versa Kernel inicializado.")
+        self.logger.info(
+            "Versa Kernel inicializado."
+        )
 
     # =========================================================================
     # Chat
@@ -95,10 +90,15 @@ class VersaKernel:
             self.initialize()
 
         assert self.ai_core is not None
+        assert self.conversation_manager is not None
+
+        context = self.conversation_manager.build_context(
+            system_prompt=system_prompt,
+        )
 
         return self.ai_core.chat(
             message=message,
-            system_prompt=system_prompt,
+            context=context,
         )
 
     # =========================================================================
@@ -106,7 +106,6 @@ class VersaKernel:
     # =========================================================================
 
     def get_ai_core(self) -> AICore:
-
         if self.ai_core is None:
             raise RuntimeError(
                 "AI Core não inicializado."
@@ -115,7 +114,6 @@ class VersaKernel:
         return self.ai_core
 
     def get_conversation_manager(self) -> ConversationManager:
-
         if self.conversation_manager is None:
             raise RuntimeError(
                 "ConversationManager não inicializado."
@@ -129,7 +127,6 @@ class VersaKernel:
 
     @property
     def initialized(self) -> bool:
-
         return self._initialized
 
     # =========================================================================
@@ -137,15 +134,18 @@ class VersaKernel:
     # =========================================================================
 
     def shutdown(self) -> None:
-
         if not self._initialized:
             return
 
-        self.logger.info("Finalizando Versa Kernel...")
+        self.logger.info(
+            "Finalizando Versa Kernel..."
+        )
 
         if self.ai_core is not None:
             self.ai_core.shutdown()
 
         self._initialized = False
 
-        self.logger.info("Versa Kernel finalizado.")
+        self.logger.info(
+            "Versa Kernel finalizado."
+        )
