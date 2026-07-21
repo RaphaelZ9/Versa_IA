@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Versa IA</title>
+
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="layout">
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <img src="/static/img/logo.png" alt="Versa Energia">
+
+            <div>
+
+                <h2>Versa IA</h2>
+                <span>Assistente Inteligente</span>
+
+            </div>
+
+        </div>
+
+        <button class="new-chat">
+
+            + Nova conversa
+
+        </button>
+
+        <div class="menu">
+
+            <div class="menu-title">
+                Histórico
+            </div>
+
+            <div class="history-empty">
+
+                Nenhuma conversa
+
+            </div>
+
+        </div>
+
+        <div class="sidebar-footer">
+
+            <div>
+
+                <strong>Versão</strong>
+
+                <span>Beta 1.0</span>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+    <main class="chat-area">
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>Versa IA</h1>
+
+                <p>Assistente da Versa Energia</p>
+
+            </div>
+
+            <div class="status">
+
+                <span class="status-dot"></span>
+
+                Online
+
+            </div>
+
+        </header>
+
+        <section class="welcome">
+
+            <h2>Olá! 👋</h2>
+
+            <p>
+                Como posso ajudar hoje?
+            </p>
+
+        </section>
+
+        <section class="quick-actions">
+
+            <div class="card">
+
+                ⚡ Mercado Livre de Energia
+
+            </div>
+
+            <div class="card">
+
+                📄 Contratos
+
+            </div>
+
+            <div class="card">
+
+                📊 Comercialização
+
+            </div>
+
+            <div class="card">
+
+                🤖 Automações
+
+            </div>
+
+            <div class="card">
+
+                📚 Base de Conhecimento
+
+            </div>
+
+            <div class="card">
+
+                💬 Fazer uma pergunta
+
+            </div>
+
+        </section>
+
+        <section id="chat" class="messages">
+
+        </section>
+
+        <footer class="chat-input">
+
+            <textarea
+                id="message"
+                placeholder="Digite sua pergunta..."
+                rows="1"></textarea>
+
+            <button id="sendButton">
+
+                Enviar
+
+            </button>
+
+        </footer>
+
+    </main>
+
+</div>
+
+<script src="/static/js/chat.js"></script>
+
+</body>
+</html>
