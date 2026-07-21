@@ -17,6 +17,7 @@ from __future__ import annotations
 from app.ai_core.context.context_package import ContextPackage
 from app.ai_core.context.providers import (
     CompanyProvider,
+    MemoryProvider,
     SystemProvider,
 )
 
@@ -41,13 +42,15 @@ class ContextBuilder:
         conversation: str | None = None,
     ) -> ContextPackage:
 
+        memory_provider = MemoryProvider(memory)
+
         return ContextPackage(
 
             system_prompt=self.providers["system"].build(),
 
             company_context=self.providers["company"].build(),
 
-            memory=memory,
+            memory=memory_provider.build(),
 
             knowledge=knowledge,
 
