@@ -30,11 +30,8 @@ class ContextBuilder:
     """
 
     def __init__(self) -> None:
-
-        self.providers = {
-            "system": SystemProvider(),
-            "company": CompanyProvider(),
-        }
+        self._system_provider = SystemProvider()
+        self._company_provider = CompanyProvider()
 
     def build(
         self,
@@ -52,8 +49,8 @@ class ContextBuilder:
         knowledge_provider = KnowledgeProvider(knowledge)
 
         return ContextPackage(
-            system_prompt=self.providers["system"].build(),
-            company_context=self.providers["company"].build(),
+            system_prompt=self._system_provider.build(),
+            company_context=self._company_provider.build(),
             memory=memory_provider.build(),
             knowledge=knowledge_provider.build(),
             conversation=conversation_provider.build(),
