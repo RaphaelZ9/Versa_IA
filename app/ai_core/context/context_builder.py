@@ -41,18 +41,16 @@ class ContextBuilder:
         knowledge: str | None = None,
         conversation: str | None = None,
     ) -> ContextPackage:
+        """
+        Constrói um ContextPackage utilizando os Providers disponíveis.
+        """
 
         memory_provider = MemoryProvider(memory)
 
         return ContextPackage(
-
             system_prompt=self.providers["system"].build(),
-
             company_context=self.providers["company"].build(),
-
             memory=memory_provider.build(),
-
             knowledge=knowledge,
-
             conversation=conversation,
         )

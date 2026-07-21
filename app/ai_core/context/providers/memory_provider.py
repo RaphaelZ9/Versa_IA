@@ -26,14 +26,11 @@ class MemoryProvider(BaseContextProvider):
         self,
         memory: str | None = None,
     ) -> None:
-        self._memory = memory
+        self._context = memory
 
     def build(self) -> str:
         """
         Retorna a memória disponível para a requisição atual.
         """
 
-        if self._memory is None:
-            return ""
-
-        return self._memory
+        return self._context or ""
