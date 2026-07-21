@@ -15,6 +15,7 @@ Ele apenas solicita que cada Provider construa sua parte do contexto.
 from __future__ import annotations
 
 from app.ai_core.context.context_package import ContextPackage
+from app.ai_core.context.context_request import ContextRequest
 from app.ai_core.context.providers import (
     CompanyProvider,
     ConversationProvider,
@@ -35,18 +36,15 @@ class ContextBuilder:
 
     def build(
         self,
-        *,
-        memory: str | None = None,
-        knowledge: str | None = None,
-        conversation: str | None = None,
+        request: ContextRequest,
     ) -> ContextPackage:
         """
         Constrói um ContextPackage utilizando os Providers disponíveis.
         """
 
-        memory_provider = MemoryProvider(memory)
-        conversation_provider = ConversationProvider(conversation)
-        knowledge_provider = KnowledgeProvider(knowledge)
+        memory_provider = MemoryProvider(request.memory)
+        conversation_provider = ConversationProvider(request.conversation)
+        knowledge_provider = KnowledgeProvider(request.knowledge)
 
         return ContextPackage(
             system_prompt=self._system_provider.build(),
