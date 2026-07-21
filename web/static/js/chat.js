@@ -63,12 +63,13 @@ async function sendMessage() {
             const response = await fetch("/chat", {...});
         */
 
-        await sleep(1200);
+        await sleep(800);
 
         thinking.remove();
 
-        addMessage(
-            "assistant",
+        thinking.remove();
+
+        await typeAssistantMessage(
             "Integração com o VersaKernel em andamento..."
         );
 
@@ -77,8 +78,9 @@ async function sendMessage() {
 
         thinking.remove();
 
-        addMessage(
-            "assistant",
+        thinking.remove();
+
+        await typeAssistantMessage(
             "Erro ao conectar com a Versa IA."
         );
 
@@ -92,38 +94,133 @@ async function sendMessage() {
 
 function addMessage(type, text) {
 
-    const div = document.createElement("div");
+    const message = document.createElement("div");
 
-    div.className = "message " + type;
+    message.className = `message ${type}`;
 
-    div.innerHTML = `
+    const title = type === "user"
+        ? "👤 Você"
+        : "⚡ Versa IA";
+
+    message.innerHTML = `
+
         <div class="bubble">
-            ${text}
+
+            <div class="message-header">
+
+                <span class="author">
+
+                    ${title}
+
+                </span>
+
+                <span class="time">
+
+                    ${getCurrentTime()}
+
+                </span>
+
+            </div>
+
+            <div class="message-content">
+
+                ${text}
+
+            </div>
+
         </div>
+
     `;
 
-    chat.appendChild(div);
+    chat.appendChild(message);
 
     scrollBottom();
 
 }
 
+async function typeAssistantMessage(text){
+
+    const message = document.createElement("div");
+
+    message.className = "message assistant";
+
+    message.innerHTML = `
+        <div class="bubble">
+
+            <div class="message-header">
+
+                <span class="author">
+
+                    ⚡ Versa IA
+
+                </span>
+
+                <span class="time">
+
+                    ${getCurrentTime()}
+
+                </span>
+
+            </div>
+
+            <div class="message-content"></div>
+
+        </div>
+    `;
+
+    chat.appendChild(message);
+
+    const content = message.querySelector(".message-content");
+
+    scrollBottom();
+
+    for(let i = 0; i < text.length; i++){
+
+        content.textContent += text[i];
+
+        scrollBottom();
+
+        await sleep(12);
+
+    }
+
+}
 /* ===========================================
    Pensando...
 =========================================== */
 
-function addThinking() {
+function addThinking(){
 
     const div = document.createElement("div");
 
     div.className = "message assistant thinking";
 
     div.innerHTML = `
+
         <div class="bubble">
-            <span></span>
-            <span></span>
-            <span></span>
+
+            <div class="message-header">
+
+                <span class="author">
+
+                    ⚡ Versa IA
+
+                </span>
+
+            </div>
+
+            <div class="message-content">
+
+                <span></span>
+
+                <span></span>
+
+                <span></span>
+
+            </div>
+
         </div>
+
     `;
 
     chat.appendChild(div);
@@ -141,6 +238,20 @@ function addThinking() {
 function scrollBottom() {
 
     chat.scrollTop = chat.scrollHeight;
+
+}
+
+function getCurrentTime(){
+
+    const now = new Date();
+
+    return now.toLocaleTimeString("pt-BR",{
+
+        hour:"2-digit",
+
+        minute:"2-digit"
+
+    });
 
 }
 
