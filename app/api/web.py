@@ -3,11 +3,14 @@ from pathlib import Path
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse
+from app.api.routes.health import router as health_router
 
 app = FastAPI(
     title="Versa IA",
     version="1.0.0"
 )
+
+app.include_router(health_router)
 
 BASE_DIR = Path(__file__).resolve().parents[2]
 

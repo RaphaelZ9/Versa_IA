@@ -18,15 +18,24 @@
 
 <div class="layout">
 
+    <!-- ==========================================================
+         SIDEBAR
+    =========================================================== -->
+
     <aside class="sidebar">
 
-        <div class="logo">
+        <div class="brand">
 
-            <img src="/static/img/logo.png" alt="Versa Energia">
+            <div class="brand-logo">
 
-            <div>
+                <img src="/static/img/logo.png" alt="Versa IA">
+
+            </div>
+
+            <div class="brand-info">
 
                 <h2>Versa IA</h2>
+
                 <span>Assistente Inteligente</span>
 
             </div>
@@ -35,31 +44,69 @@
 
         <button class="new-chat">
 
-            + Nova conversa
+            <span>＋</span>
+
+            Nova conversa
 
         </button>
 
-        <div class="menu">
+        <nav class="sidebar-section">
 
-            <div class="menu-title">
-                Histórico
-            </div>
+            <h3>Histórico</h3>
 
             <div class="history-empty">
 
-                Nenhuma conversa
+                Nenhuma conversa iniciada.
 
             </div>
 
-        </div>
+        </nav>
 
-        <div class="sidebar-footer">
+        <div class="sidebar-section infra">
 
-            <div>
+            <h3>Infraestrutura</h3>
 
-                <strong>Versão</strong>
+            <div class="infra-item">
 
-                <span>Beta 1.0</span>
+                <span>Modelo</span>
+
+                <strong>Qwen3 8B</strong>
+
+            </div>
+
+            <div class="infra-item">
+
+                <span>Motor</span>
+
+                <strong>Ollama</strong>
+
+            </div>
+
+            <div class="infra-item">
+
+                <span>Banco</span>
+
+                <strong>Supabase</strong>
+
+            </div>
+
+            <div class="infra-item">
+
+                <span>Status</span>
+
+                <strong class="online">
+
+                    ● Online
+
+                </strong>
+
+            </div>
+
+            <div class="infra-item">
+
+                <span>Versão</span>
+
+                <strong>Beta 1.0</strong>
 
             </div>
 
@@ -67,19 +114,31 @@
 
     </aside>
 
-    <main class="chat-area">
+    <!-- ==========================================================
+         WORKSPACE
+    =========================================================== -->
 
-        <header class="topbar">
+    <main class="workspace">
 
-            <div>
+     <!-- ==========================================================
+         TOPO
+    =========================================================== -->
 
-                <h1>Versa IA</h1>
+    <header class="topbar">
 
-                <p>Assistente da Versa Energia</p>
+        <div class="topbar-left">
 
-            </div>
+            <h1>Versa IA</h1>
 
-            <div class="status">
+            <p>
+                Inteligência para o Mercado Livre de Energia
+            </p>
+
+        </div>
+
+        <div class="topbar-right">
+
+            <div class="status-pill">
 
                 <span class="status-dot"></span>
 
@@ -87,82 +146,187 @@
 
             </div>
 
-        </header>
+            <div class="model-pill">
 
-        <section class="welcome">
+                Qwen3 8B
 
-            <h2>Olá! 👋</h2>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================================
+         HOME
+    =========================================================== -->
+
+    <section id="homeScreen" class="home-screen">
+
+        <div class="hero">
+
+            <h2>
+
+                Bem-vindo à Versa IA
+
+            </h2>
 
             <p>
-                Como posso ajudar hoje?
+
+                Seu assistente inteligente para apoiar as operações da
+                Versa Energia, responder dúvidas, consultar documentos
+                e automatizar processos internos.
+
             </p>
 
-        </section>
+        </div>
 
-        <section class="quick-actions">
 
-            <div class="card">
+        <div class="suggestions">
 
-                ⚡ Mercado Livre de Energia
+            <button class="chip">
 
-            </div>
-
-            <div class="card">
-
-                📄 Contratos
-
-            </div>
-
-            <div class="card">
-
-                📊 Comercialização
-
-            </div>
-
-            <div class="card">
-
-                🤖 Automações
-
-            </div>
-
-            <div class="card">
-
-                📚 Base de Conhecimento
-
-            </div>
-
-            <div class="card">
-
-                💬 Fazer uma pergunta
-
-            </div>
-
-        </section>
-
-        <section id="chat" class="messages">
-
-        </section>
-
-        <footer class="chat-input">
-
-            <textarea
-                id="message"
-                placeholder="Digite sua pergunta..."
-                rows="1"></textarea>
-
-            <button id="sendButton">
-
-                Enviar
+                ⚡ Mercado Livre
 
             </button>
 
-        </footer>
+            <button class="chip">
 
-    </main>
+                📄 Contratos
+
+            </button>
+
+            <button class="chip">
+
+                📈 Comercialização
+
+            </button>
+
+            <button class="chip">
+
+                🤖 Hermes
+
+            </button>
+
+            <button class="chip">
+
+                📚 Base de Conhecimento
+
+            </button>
+
+            <button class="chip">
+
+                📊 Indicadores
+
+            </button>
+
+        </div>
+
+
+        <div class="examples">
+
+            <h3>
+
+                Experimente perguntar:
+
+            </h3>
+
+            <button class="example">
+
+                Como funciona o Mercado Livre de Energia?
+
+            </button>
+
+            <button class="example">
+
+                Explique este contrato.
+
+            </button>
+
+            <button class="example">
+
+                Resuma este PDF.
+
+            </button>
+
+            <button class="example">
+
+                Gerar relatório mensal.
+
+            </button>
+
+        </div>
+
+    </section>
+    
+        <!-- ==========================================================
+         CHAT
+    =========================================================== -->
+
+    <section class="chat-container">
+
+        <div id="chat" class="messages">
+
+            <!-- As mensagens serão adicionadas aqui pelo chat.js -->
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================================
+         COMPOSER
+    =========================================================== -->
+
+    <footer class="composer">
+
+        <div class="composer-box">
+
+            <textarea
+                id="message"
+                rows="1"
+                autocomplete="off"
+                placeholder="Pergunte qualquer coisa sobre a Versa Energia..."></textarea>
+
+            <button
+                id="sendButton"
+                class="send-button"
+                title="Enviar">
+
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2">
+
+                    <path d="M22 2L11 13"></path>
+
+                    <path d="M22 2L15 22L11 13L2 9L22 2"></path>
+
+                </svg>
+
+            </button>
+
+        </div>
+
+        <div class="composer-footer">
+
+            A Versa IA pode cometer erros. Sempre valide informações importantes.
+
+        </div>
+
+    </footer>
+
+</main>
 
 </div>
 
 <script src="/static/js/chat.js"></script>
 
 </body>
+
+</html>
 </html>

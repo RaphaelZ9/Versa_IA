@@ -1,6 +1,8 @@
 const textarea = document.getElementById("message");
 const sendButton = document.getElementById("sendButton");
 const chat = document.getElementById("chat");
+const homeScreen = document.getElementById("homeScreen");
+const newChatButton = document.querySelector(".new-chat");
 
 /* ===========================================
    Auto Resize
@@ -31,6 +33,8 @@ textarea.addEventListener("keydown", (e) => {
 
 sendButton.addEventListener("click", sendMessage);
 
+newChatButton.addEventListener("click", newConversation);
+
 /* ===========================================
    Mensagem
 =========================================== */
@@ -43,6 +47,8 @@ async function sendMessage() {
         return;
 
     addMessage("user", text);
+
+    hideHome();
 
     textarea.value = "";
     textarea.style.height = "58px";
@@ -145,5 +151,45 @@ function scrollBottom() {
 function sleep(ms){
 
     return new Promise(resolve => setTimeout(resolve, ms));
+
+}
+
+function hideHome(){
+
+    if(homeScreen){
+
+        homeScreen.style.display = "none";
+
+    }
+
+}
+
+function showHome(){
+
+    if(homeScreen){
+
+        homeScreen.style.display = "flex";
+
+    }
+
+}
+
+function clearConversation(){
+
+    chat.innerHTML = "";
+
+}
+
+function newConversation(){
+
+    clearConversation();
+
+    showHome();
+
+    textarea.value = "";
+
+    textarea.style.height = "58px";
+
+    textarea.focus();
 
 }
