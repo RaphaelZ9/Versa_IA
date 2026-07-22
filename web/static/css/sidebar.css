@@ -1,0 +1,297 @@
+/*=====================================================
+    SIDEBAR
+=====================================================*/
+
+.sidebar{
+
+    background:var(--sidebar);
+
+    border-right:1px solid var(--border);
+
+    padding:28px;
+
+    gap:28px;
+
+}
+
+/*=====================================================
+    HEADER
+=====================================================*/
+
+.sidebar-header{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:24px;
+
+}
+
+/*=====================================================
+    BRAND
+=====================================================*/
+
+.brand{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+}
+
+.brand-logo{
+
+    width:64px;
+
+    height:64px;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    background:white;
+
+    flex-shrink:0;
+
+    box-shadow:var(--shadow);
+
+}
+
+.brand-info{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.brand-info h1{
+
+    font-size:20px;
+
+    font-weight:700;
+
+}
+
+.brand-info span{
+
+    margin-top:4px;
+
+    font-size:14px;
+
+    color:var(--text-muted);
+
+}
+
+/*=====================================================
+    NOVA CONVERSA
+=====================================================*/
+
+.new-chat{
+
+    height:56px;
+
+    border-radius:16px;
+
+    background:var(--primary);
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.new-chat:hover{
+
+    background:var(--primary-hover);
+
+    transform:translateY(-2px);
+
+}
+
+/*=====================================================
+    TÍTULOS
+=====================================================*/
+
+.sidebar-title{
+
+    font-size:12px;
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+
+    color:var(--text-muted);
+
+    margin-bottom:14px;
+
+}
+
+/*=====================================================
+    HISTÓRICO
+=====================================================*/
+
+.sidebar-history{
+
+    flex:1;
+
+    overflow:hidden;
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.conversation-list{
+
+    overflow-y:auto;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+    padding-right:4px;
+
+}
+
+.history-empty{
+
+    color:var(--text-muted);
+
+    line-height:1.6;
+
+}
+
+.history-empty-icon{
+
+    font-size:30px;
+
+    margin-bottom:12px;
+
+}
+
+/*=====================================================
+    ITEM DE CONVERSA
+=====================================================*/
+
+.conversation-item{
+
+    padding:14px 16px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    background:transparent;
+
+}
+
+.conversation-item:hover{
+
+    background:rgba(255,255,255,.05);
+
+}
+
+.conversation-item.active{
+
+    background:rgba(25,199,181,.15);
+
+    border:1px solid rgba(25,199,181,.35);
+
+}
+
+/*=====================================================
+    ATALHOS
+=====================================================*/
+
+.sidebar-shortcuts{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.shortcut{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    width:100%;
+
+    padding:12px 14px;
+
+    border-radius:12px;
+
+    margin-bottom:8px;
+
+    background:transparent;
+
+    color:var(--text);
+
+    text-align:left;
+
+}
+
+.shortcut:hover{
+
+    background:rgba(255,255,255,.05);
+
+}
+
+/*=====================================================
+    RODAPÉ
+=====================================================*/
+
+.sidebar-footer{
+
+    margin-top:auto;
+
+    border-top:1px solid var(--border);
+
+    padding-top:22px;
+
+}
+
+.infra-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:14px;
+
+}
+
+.infra-item span{
+
+    color:var(--text-muted);
+
+}
+
+.online{
+
+    color:var(--success);
+
+}
