@@ -1,47 +1,41 @@
 /* =============================================================================
+   VERSA IA
+   COMPOSER.CSS
+   ============================================================================= */
+
+/* =============================================================================
    COMPOSER
    ============================================================================= */
 
 .composer {
 
-    position: sticky;
+    padding: 20px 24px 28px;
 
-    bottom: 0;
+    background: var(--background-color);
 
-    z-index: 100;
-
-    width: 100%;
-
-    padding: 18px 32px 28px;
-
-    background:
-        linear-gradient(
-            to top,
-            var(--background-color) 70%,
-            transparent
-        );
+    border-top: 1px solid var(--border-color);
 
 }
 
 /* =============================================================================
-   WRAPPER
+   CONTAINER
    ============================================================================= */
 
-.composer-wrapper {
+.composer-container {
 
     width: 100%;
 
-    max-width: 1100px;
+    max-width: var(--composer-max-width);
 
     margin: 0 auto;
 
 }
 
 /* =============================================================================
-   SURFACE
+   FORM
    ============================================================================= */
 
-.composer-surface {
+.composer-form {
 
     display: flex;
 
@@ -49,198 +43,33 @@
 
     gap: 14px;
 
-    padding: 16px;
-
-    border: 1px solid rgba(255,255,255,.08);
-
-    border-radius: 22px;
-
-    background: var(--surface-color);
-
-    box-shadow:
-        0 10px 40px rgba(0,0,0,.18);
-
-    backdrop-filter: blur(18px);
-
 }
 
 /* =============================================================================
-   TOOLBAR
-   ============================================================================= */
-
-.composer-toolbar {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    gap: 16px;
-
-}
-
-/* =============================================================================
-   TOOLBAR LEFT
-   ============================================================================= */
-
-.toolbar-left {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-
-}
-
-/* =============================================================================
-   TOOLBAR RIGHT
-   ============================================================================= */
-
-.toolbar-right {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-
-}
-
-/* =============================================================================
-   TOOL BUTTON
-   ============================================================================= */
-
-.tool-button {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    width: 40px;
-
-    height: 40px;
-
-    border: none;
-
-    border-radius: 12px;
-
-    background: rgba(255,255,255,.04);
-
-    color: var(--text-secondary);
-
-    cursor: pointer;
-
-    transition:
-        background .20s ease,
-        color .20s ease,
-        transform .20s ease;
-
-}
-
-.tool-button:hover {
-
-    background: rgba(255,255,255,.08);
-
-    color: var(--text-primary);
-
-    transform: translateY(-2px);
-
-}
-
-.tool-button:active {
-
-    transform: scale(.96);
-
-}
-
-/* =============================================================================
-   LABEL
-   ============================================================================= */
-
-.toolbar-label {
-
-    color: var(--text-secondary);
-
-    font-size: .85rem;
-
-    font-weight: 500;
-
-}
-
-/* =============================================================================
-   SELECT
-   ============================================================================= */
-
-.model-selector {
-
-    min-width: 150px;
-
-    height: 38px;
-
-    padding: 0 14px;
-
-    border: 1px solid rgba(255,255,255,.08);
-
-    border-radius: 10px;
-
-    background: rgba(255,255,255,.03);
-
-    color: var(--text-primary);
-
-    font-size: .90rem;
-
-    outline: none;
-
-    cursor: pointer;
-
-    transition:
-        border-color .20s ease,
-        background .20s ease;
-
-}
-
-.model-selector:hover {
-
-    background: rgba(255,255,255,.05);
-
-}
-
-.model-selector:focus {
-
-    border-color: var(--primary-color);
-
-}
-
-/* =============================================================================
-   COMPOSER BOX
+   BOX
    ============================================================================= */
 
 .composer-box {
 
     display: flex;
-
     align-items: flex-end;
-
     gap: 14px;
 
-    width: 100%;
+    padding: 16px 18px;
 
-    padding: 12px;
+    background: #1f2937;
 
-    border: 1px solid rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.06);
 
-    border-radius: 18px;
+    border-radius: 28px;
 
-    background: rgba(255,255,255,.02);
+    box-shadow:
+        0 8px 24px rgba(0,0,0,.25);
 
     transition:
-        border-color .20s ease,
-        background .20s ease,
-        box-shadow .20s ease;
+        border-color .25s ease,
+        box-shadow .25s ease,
+        transform .25s ease;
 
 }
 
@@ -248,18 +77,17 @@
 
     border-color: var(--primary-color);
 
-    background: rgba(255,255,255,.04);
-
     box-shadow:
-        0 0 0 3px rgba(88,166,255,.12);
+        0 0 0 1px rgba(20,184,166,.35),
+        0 10px 30px rgba(20,184,166,.12);
 
 }
 
 /* =============================================================================
-   PROMPT INPUT
+   TEXTAREA
    ============================================================================= */
 
-.prompt-input {
+.composer-input {
 
     flex: 1;
 
@@ -267,92 +95,74 @@
 
     max-height: 220px;
 
-    padding: 8px 4px;
-
-    border: none;
-
-    outline: none;
-
-    resize: none;
-
     overflow-y: auto;
 
     background: transparent;
 
     color: var(--text-primary);
 
-    font-family: inherit;
+    font-size: 16px;
 
-    font-size: 1rem;
+    font-weight:400;
 
     line-height: 1.6;
 
-}
-
-.prompt-input::placeholder {
-
-    color: var(--text-secondary);
-
-    opacity: .75;
+    padding-bottom:6px;
 
 }
 
-.prompt-input::-webkit-scrollbar {
-
-    width: 6px;
-
-}
-
-.prompt-input::-webkit-scrollbar-thumb {
-
-    border-radius: 999px;
-
-    background: rgba(255,255,255,.12);
-
-}
-
-.prompt-input::-webkit-scrollbar-track {
-
-    background: transparent;
+.composer-input::placeholder {
+    padding-left:8px;
+    color:#7b8798;
 
 }
 
 /* =============================================================================
-   SEND BUTTON
+   ACTIONS
    ============================================================================= */
 
-.send-button {
+.composer-actions {
 
     display: flex;
 
     align-items: center;
 
-    justify-content: center;
-
-    flex-shrink: 0;
-
-    width: 48px;
-
-    height: 48px;
-
-    border: none;
-
-    border-radius: 14px;
-
-    background: var(--primary-color);
-
-    color: #ffffff;
-
-    cursor: pointer;
-
-    transition:
-        transform .20s ease,
-        filter .20s ease,
-        box-shadow .20s ease;
+    gap: 10px;
 
 }
 
-.send-button svg {
+/* =============================================================================
+   BUTTON BASE
+   ============================================================================= */
+
+.composer-button{
+
+    width:40px;
+    height:40px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:transparent;
+
+    color:#8b98a9;
+
+    transition:all .2s ease;
+
+}
+
+.composer-button:hover {
+
+    background: rgba(255,255,255,.06);
+
+    color:#fff;
+
+}
+
+.composer-button svg {
 
     width: 20px;
 
@@ -360,75 +170,161 @@
 
 }
 
-.send-button:hover {
+/* =============================================================================
+   SEND
+   ============================================================================= */
 
-    transform: translateY(-2px);
+.composer-send{
+    width:42px;
+    height:42px;
+    background:var(--primary-color);
+    color:#8b98a9;
+}
+
+.composer-send:hover{
+    background:var(--primary-hover);
+
+    transform:scale(1.08);
+}
+
+.composer-send:disabled {
+
+    opacity: .45;
+
+    cursor: not-allowed;
+
+}
+
+/* =============================================================================
+   STOP
+   ============================================================================= */
+
+.composer-stop {
+
+    background: var(--danger-color);
+
+    color: white;
+
+}
+
+.composer-stop:hover {
 
     filter: brightness(1.08);
 
-    box-shadow:
-        0 8px 22px rgba(88,166,255,.35);
-
 }
 
-.send-button:active {
+/* =============================================================================
+   ATTACHMENTS
+   ============================================================================= */
 
-    transform: scale(.96);
+.composer-attachments {
 
-}
+    display: flex;
 
-.send-button:disabled {
+    flex-wrap: wrap;
 
-    opacity: .45;
-
-    cursor: not-allowed;
-
-    transform: none;
-
-    box-shadow: none;
+    gap: 10px;
 
 }
 
 /* =============================================================================
-   ESTADOS
+   FILE CARD
    ============================================================================= */
 
-.prompt-input:disabled {
+.composer-file {
 
-    cursor: not-allowed;
+    display: flex;
 
-    opacity: .60;
+    align-items: center;
 
-}
+    gap: 10px;
 
-.model-selector:disabled {
+    padding: 10px 14px;
 
-    cursor: not-allowed;
+    border-radius: var(--radius-md);
 
-    opacity: .60;
+    background: rgba(255,255,255,.05);
 
-}
-
-.tool-button:disabled {
-
-    cursor: not-allowed;
-
-    opacity: .45;
-
-    transform: none;
+    border: 1px solid rgba(255,255,255,.05);
 
 }
 
-.tool-button:disabled:hover {
+.composer-file-icon {
 
-    background: rgba(255,255,255,.04);
+    width: 34px;
+
+    height: 34px;
+
+    border-radius: 10px;
+
+    background: rgba(20,184,166,.12);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: var(--primary-color);
+
+}
+
+.composer-file-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2px;
+
+}
+
+.composer-file-name {
+
+    color: var(--text-primary);
+
+    font-size: .85rem;
+
+    font-weight: 600;
+
+}
+
+.composer-file-size {
 
     color: var(--text-secondary);
 
+    font-size: .75rem;
+
 }
 
 /* =============================================================================
-   COMPOSER FOOTER
+   REMOVE FILE
+   ============================================================================= */
+
+.composer-file-remove {
+
+    width: 28px;
+
+    height: 28px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+.composer-file-remove:hover {
+
+    background: rgba(255,255,255,.08);
+
+}
+
+/* =============================================================================
+   FOOTER
    ============================================================================= */
 
 .composer-footer {
@@ -439,201 +335,107 @@
 
     align-items: center;
 
-    gap: 16px;
+    padding: 0 8px;
 
-    padding: 0 4px;
+}
+
+/* =============================================================================
+   INFO
+   ============================================================================= */
+
+.composer-info {
 
     color: var(--text-secondary);
 
-    font-size: .82rem;
-
-    line-height: 1.4;
-
-}
-
-.composer-footer span {
-
-    opacity: .75;
+    font-size: .78rem;
 
 }
 
 /* =============================================================================
-   TABLET
+   COUNTER
    ============================================================================= */
 
-@media (max-width: 1024px) {
+.composer-counter {
 
-    .composer {
+    color: var(--text-secondary);
 
-        padding: 16px 24px 24px;
+    font-size: .78rem;
+
+}
+
+/* =============================================================================
+   DRAG & DROP
+   ============================================================================= */
+
+.composer-box.dragover {
+
+    border-color: var(--primary-color);
+
+    background: rgba(20,184,166,.08);
+
+}
+
+/* =============================================================================
+   LOADING
+   ============================================================================= */
+
+.composer-uploading {
+
+    opacity: .65;
+
+    pointer-events: none;
+
+}
+
+/* =============================================================================
+   RESPONSIVE
+   ============================================================================= */
+
+@media (max-width:768px){
+
+    .composer{
+
+        padding:16px;
 
     }
 
-    .composer-wrapper {
+    .composer-box{
 
-        max-width: 100%;
+        padding:12px;
+
+    }
+
+    .composer-button{
+
+        width:38px;
+
+        height:38px;
+
+    }
+
+    .composer-footer{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:6px;
 
     }
 
 }
 
-/* =============================================================================
-   MOBILE
-   ============================================================================= */
+@media (max-width:480px){
 
-@media (max-width: 768px) {
+    .composer-attachments{
 
-    .composer {
-
-        padding: 14px 16px 20px;
+        flex-direction:column;
 
     }
 
-    .composer-surface {
+    .composer-file{
 
-        padding: 14px;
-
-        border-radius: 18px;
-
-    }
-
-    .composer-toolbar {
-
-        flex-direction: column;
-
-        align-items: stretch;
-
-        gap: 12px;
-
-    }
-
-    .toolbar-left,
-    .toolbar-right {
-
-        width: 100%;
-
-        justify-content: space-between;
-
-    }
-
-    .model-selector {
-
-        flex: 1;
-
-        min-width: 0;
-
-    }
-
-    .composer-box {
-
-        gap: 10px;
-
-        padding: 10px;
-
-    }
-
-    .prompt-input {
-
-        font-size: .96rem;
-
-    }
-
-    .send-button {
-
-        width: 44px;
-
-        height: 44px;
-
-    }
-
-    .composer-footer {
-
-        flex-direction: column;
-
-        align-items: center;
-
-        text-align: center;
-
-        gap: 6px;
-
-        font-size: .78rem;
-
-    }
-
-}
-
-/* =============================================================================
-   MOBILE PEQUENO
-   ============================================================================= */
-
-@media (max-width: 480px) {
-
-    .composer {
-
-        padding: 12px;
-
-    }
-
-    .composer-surface {
-
-        padding: 12px;
-
-        border-radius: 16px;
-
-    }
-
-    .tool-button {
-
-        width: 36px;
-
-        height: 36px;
-
-        border-radius: 10px;
-
-        font-size: .95rem;
-
-    }
-
-    .send-button {
-
-        width: 42px;
-
-        height: 42px;
-
-        border-radius: 12px;
-
-    }
-
-    .send-button svg {
-
-        width: 18px;
-
-        height: 18px;
-
-    }
-
-    .prompt-input {
-
-        font-size: .92rem;
-
-        line-height: 1.5;
-
-    }
-
-}
-
-/* =============================================================================
-   ACESSIBILIDADE
-   ============================================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    .composer-box,
-    .tool-button,
-    .send-button,
-    .model-selector {
-
-        transition: none;
+        width:100%;
 
     }
 

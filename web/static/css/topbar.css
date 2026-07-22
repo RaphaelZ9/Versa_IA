@@ -1,1004 +1,325 @@
 /* =============================================================================
-   TOPBAR
-   ============================================================================= */
+   VERSA IA
+   TOPBAR V2
+============================================================================= */
 
-.topbar {
+.topbar{
+    height:72px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 
-    position: sticky;
+    padding:0 26px;
 
-    top: 0;
+    background:rgba(15,23,42,.82);
 
-    z-index: 100;
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
 
-    display: flex;
+    border-bottom:1px solid rgba(255,255,255,.06);
 
-    align-items: center;
+    position:relative;
+    z-index:100;
+}
 
-    justify-content: space-between;
 
-    gap: 24px;
+/*=============================================================================
+LEFT
+=============================================================================*/
 
-    width: 100%;
+.topbar-left{
 
-    min-height: 72px;
+    width:320px;
 
-    padding: 0 32px;
-
-    background: rgba(15,23,42,.82);
-
-    backdrop-filter: blur(14px);
-
-    -webkit-backdrop-filter: blur(14px);
-
-    border-bottom: 1px solid rgba(255,255,255,.06);
+    display:flex;
+    align-items:center;
 
 }
 
-/* =============================================================================
-   LEFT
-   ============================================================================= */
+.topbar-brand{
 
-.topbar-left {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 18px;
-
-    min-width: 0;
-
-    flex: 1;
+    display:flex;
+    flex-direction:column;
 
 }
 
-/* =============================================================================
-   MENU BUTTON
-   ============================================================================= */
+.topbar-brand h1{
 
-.topbar-menu {
+    font-size:20px;
+    font-weight:700;
 
-    display: none;
+    color:#fff;
 
-    align-items: center;
+    line-height:1;
 
-    justify-content: center;
-
-    width: 42px;
-
-    height: 42px;
-
-    border: none;
-
-    border-radius: 12px;
-
-    background: transparent;
-
-    color: var(--text-primary);
-
-    cursor: pointer;
-
-    transition:
-        background .20s ease,
-        color .20s ease,
-        transform .15s ease;
+    letter-spacing:-.4px;
 
 }
 
-.topbar-menu:hover {
+.topbar-brand span{
 
-    background: rgba(255,255,255,.06);
+    margin-top:4px;
 
-}
+    font-size:13px;
 
-.topbar-menu:active {
-
-    transform: scale(.96);
+    color:#94a3b8;
 
 }
 
-.topbar-menu svg {
+.topbar-status{
 
-    width: 20px;
+    margin-top:10px;
 
-    height: 20px;
+    display:flex;
+    align-items:center;
 
-}
+    gap:8px;
 
-/* =============================================================================
-   TITLE
-   ============================================================================= */
+    font-size:12px;
 
-.topbar-title-group {
-
-    display: flex;
-
-    flex-direction: column;
-
-    min-width: 0;
-
-    gap: 3px;
+    color:#94a3b8;
 
 }
 
-.topbar-title {
+.status-dot{
 
-    overflow: hidden;
+    width:8px;
+    height:8px;
 
-    color: var(--text-primary);
+    border-radius:50%;
 
-    font-size: 1.08rem;
-
-    font-weight: 700;
-
-    white-space: nowrap;
-
-    text-overflow: ellipsis;
-
-}
-
-.topbar-subtitle {
-
-    overflow: hidden;
-
-    color: var(--text-secondary);
-
-    font-size: .82rem;
-
-    white-space: nowrap;
-
-    text-overflow: ellipsis;
-
-}
-
-/* =============================================================================
-   STATUS
-   ============================================================================= */
-
-.topbar-status {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 8px;
-
-    margin-top: 2px;
-
-    color: var(--text-secondary);
-
-    font-size: .76rem;
-
-    font-weight: 500;
-
-}
-
-.topbar-status::before {
-
-    content: "";
-
-    width: 8px;
-
-    height: 8px;
-
-    border-radius: 50%;
-
-    background: #22c55e;
+    background:#22c55e;
 
     box-shadow:
-        0 0 8px rgba(34,197,94,.45);
+
+        0 0 10px rgba(34,197,94,.7),
+        0 0 20px rgba(34,197,94,.3);
 
 }
 
-/* =============================================================================
-   CENTER
-   ============================================================================= */
 
-.topbar-center {
+/*=============================================================================
+CENTER
+=============================================================================*/
 
-    display: flex;
+.topbar-center{
 
-    align-items: center;
+    flex:1;
 
-    justify-content: center;
-
-    flex: 1;
-
-    min-width: 0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
 }
 
-/* =============================================================================
-   RIGHT
-   ============================================================================= */
 
-.topbar-right {
+/*=============================================================================
+RIGHT
+=============================================================================*/
 
-    display: flex;
+.topbar-right{
 
-    align-items: center;
+    width:320px;
 
-    justify-content: flex-end;
+    display:flex;
 
-    gap: 8px;
+    justify-content:flex-end;
 
-    flex-shrink: 0;
+    align-items:center;
 
-}
-
-/* =============================================================================
-   ACTION GROUP
-   ============================================================================= */
-
-.topbar-actions {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 6px;
+    gap:14px;
 
 }
 
-/* =============================================================================
-   ACTION BUTTON
-   ============================================================================= */
 
-.topbar-button {
+/*=============================================================================
+NEW CHAT
+=============================================================================*/
 
-    display: inline-flex;
+.topbar-action{
 
-    align-items: center;
+    height:46px;
 
-    justify-content: center;
+    padding:0 18px;
 
-    gap: 8px;
+    display:flex;
+    align-items:center;
 
-    min-width: 42px;
+    gap:10px;
 
-    height: 42px;
+    border-radius:14px;
 
-    padding: 0 14px;
+    background:rgba(255,255,255,.04);
 
-    border: none;
+    border:1px solid rgba(255,255,255,.08);
 
-    border-radius: 12px;
-
-    background: transparent;
-
-    color: var(--text-secondary);
-
-    cursor: pointer;
-
-    transition:
-        background .20s ease,
-        color .20s ease,
-        transform .15s ease,
-        box-shadow .20s ease;
+    transition:.25s;
 
 }
 
-.topbar-button:hover {
+.topbar-action:hover{
 
-    background: rgba(255,255,255,.06);
+    transform:translateY(-2px);
 
-    color: var(--text-primary);
-
-}
-
-.topbar-button:focus-visible {
-
-    outline: none;
-
-    box-shadow:
-        0 0 0 2px rgba(255,255,255,.08),
-        0 0 0 4px rgba(59,130,246,.30);
+    background:rgba(255,255,255,.07);
 
 }
 
-.topbar-button:active {
+.topbar-action svg{
 
-    transform: scale(.96);
-
-}
-
-.topbar-button:disabled {
-
-    opacity: .45;
-
-    cursor: not-allowed;
-
-    pointer-events: none;
+    width:18px;
+    height:18px;
 
 }
 
-/* =============================================================================
-   PRIMARY BUTTON
-   ============================================================================= */
+.topbar-action span{
 
-.topbar-button.primary {
+    font-size:14px;
 
-    background: var(--primary-color);
-
-    color: #ffffff;
+    font-weight:500;
 
 }
 
-.topbar-button.primary:hover {
 
-    background: var(--primary-hover);
+/*=============================================================================
+USER
+=============================================================================*/
 
-    color: #ffffff;
+.user-button{
 
-}
+    display:flex;
 
-/* =============================================================================
-   ICONS
-   ============================================================================= */
+    align-items:center;
 
-.topbar-button svg {
+    gap:12px;
 
-    width: 18px;
+    padding:6px;
 
-    height: 18px;
+    border-radius:18px;
 
-    flex-shrink: 0;
-
-}
-
-.topbar-button span {
-
-    white-space: nowrap;
-
-    font-size: .90rem;
-
-    font-weight: 500;
+    transition:.25s;
 
 }
 
-/* =============================================================================
-   DIVIDER
-   ============================================================================= */
+.user-button:hover{
 
-.topbar-divider {
-
-    width: 1px;
-
-    height: 24px;
-
-    margin: 0 6px;
-
-    background: rgba(255,255,255,.08);
+    background:rgba(255,255,255,.05);
 
 }
 
-/* =============================================================================
-   BUTTON STATES
-   ============================================================================= */
+.user-avatar{
 
-.topbar-button.active {
+    width:42px;
+    height:42px;
 
-    background: rgba(255,255,255,.08);
+    border-radius:50%;
 
-    color: var(--text-primary);
+    display:flex;
 
-}
+    align-items:center;
+    justify-content:center;
 
-.topbar-button.loading {
-
-    position: relative;
-
-    color: transparent;
-
-    pointer-events: none;
-
-}
-
-.topbar-button.loading::after {
-
-    content: "";
-
-    position: absolute;
-
-    width: 16px;
-
-    height: 16px;
-
-    border: 2px solid rgba(255,255,255,.25);
-
-    border-top-color: #ffffff;
-
-    border-radius: 50%;
-
-    animation: topbarSpin .8s linear infinite;
-
-}
-
-/* =============================================================================
-   MODEL SELECTOR
-   ============================================================================= */
-
-.topbar-model {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-
-    height: 42px;
-
-    padding: 0 14px;
-
-    border: 1px solid rgba(255,255,255,.08);
-
-    border-radius: 12px;
-
-    background: rgba(255,255,255,.03);
-
-    cursor: pointer;
-
-    transition:
-        border-color .20s ease,
-        background .20s ease,
-        box-shadow .20s ease;
-
-}
-
-.topbar-model:hover {
-
-    background: rgba(255,255,255,.05);
-
-    border-color: rgba(255,255,255,.14);
-
-}
-
-.topbar-model:focus-within {
-
-    border-color: var(--primary-color);
-
-    box-shadow:
-        0 0 0 3px rgba(59,130,246,.18);
-
-}
-
-.topbar-model-icon {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    color: var(--primary-color);
-
-}
-
-.topbar-model-label {
-
-    color: var(--text-secondary);
-
-    font-size: .78rem;
-
-    white-space: nowrap;
-
-}
-
-.topbar-model-name {
-
-    color: var(--text-primary);
-
-    font-size: .90rem;
-
-    font-weight: 600;
-
-    white-space: nowrap;
-
-}
-
-.topbar-model select {
-
-    border: none;
-
-    outline: none;
-
-    background: transparent;
-
-    color: var(--text-primary);
-
-    font-size: .90rem;
-
-    font-weight: 600;
-
-    cursor: pointer;
-
-    appearance: none;
-
-}
-
-/* =============================================================================
-   USER PROFILE
-   ============================================================================= */
-
-.topbar-profile {
-
-    position: relative;
-
-}
-
-.topbar-profile-button {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-
-    height: 42px;
-
-    padding: 0 10px 0 8px;
-
-    border: none;
-
-    border-radius: 12px;
-
-    background: transparent;
-
-    color: var(--text-primary);
-
-    cursor: pointer;
-
-    transition:
-        background .20s ease,
-        transform .15s ease;
-
-}
-
-.topbar-profile-button:hover {
-
-    background: rgba(255,255,255,.06);
-
-}
-
-.topbar-profile-button:active {
-
-    transform: scale(.98);
-
-}
-
-/* =============================================================================
-   AVATAR
-   ============================================================================= */
-
-.topbar-avatar {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    width: 34px;
-
-    height: 34px;
-
-    border-radius: 50%;
-
-    background: linear-gradient(
+    background:linear-gradient(
         135deg,
-        var(--primary-color),
-        var(--primary-hover)
+        #14b8a6,
+        #0f766e
     );
 
-    color: #ffffff;
+    color:white;
 
-    font-size: .84rem;
+    font-weight:700;
 
-    font-weight: 700;
-
-    flex-shrink: 0;
+    font-size:15px;
 
 }
 
-.topbar-user {
+.user-info{
 
-    display: flex;
+    display:flex;
 
-    flex-direction: column;
-
-    align-items: flex-start;
-
-    gap: 2px;
-
-    min-width: 0;
+    flex-direction:column;
 
 }
 
-.topbar-user-name {
+.user-name{
 
-    max-width: 140px;
+    font-size:14px;
 
-    overflow: hidden;
+    font-weight:600;
 
-    text-overflow: ellipsis;
-
-    white-space: nowrap;
-
-    font-size: .88rem;
-
-    font-weight: 600;
-
-    color: var(--text-primary);
+    color:white;
 
 }
 
-.topbar-user-role {
+.user-role{
 
-    font-size: .74rem;
+    font-size:12px;
 
-    color: var(--text-secondary);
-
-}
-
-/* =============================================================================
-   STATUS BADGE
-   ============================================================================= */
-
-.topbar-badge {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    min-width: 22px;
-
-    height: 22px;
-
-    padding: 0 8px;
-
-    border-radius: 999px;
-
-    background: rgba(34,197,94,.15);
-
-    color: #4ade80;
-
-    font-size: .70rem;
-
-    font-weight: 700;
+    color:#94a3b8;
 
 }
 
-.topbar-badge.warning {
 
-    background: rgba(245,158,11,.15);
+/*=============================================================================
+RESPONSIVO
+=============================================================================*/
 
-    color: #fbbf24;
+@media(max-width:1200px){
 
-}
+    .topbar-left{
 
-.topbar-badge.error {
-
-    background: rgba(239,68,68,.15);
-
-    color: #f87171;
-
-}
-
-/* =============================================================================
-   PROFILE DROPDOWN
-   ============================================================================= */
-
-.topbar-dropdown {
-
-    position: absolute;
-
-    top: calc(100% + 10px);
-
-    right: 0;
-
-    display: none;
-
-    min-width: 240px;
-
-    padding: 10px;
-
-    border-radius: 14px;
-
-    background: var(--surface-color);
-
-    border: 1px solid rgba(255,255,255,.08);
-
-    box-shadow:
-        0 18px 40px rgba(0,0,0,.30);
-
-    z-index: 500;
-
-}
-
-.topbar-dropdown.open {
-
-    display: block;
-
-}
-
-.topbar-dropdown-item {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
-
-    width: 100%;
-
-    padding: 12px;
-
-    border: none;
-
-    border-radius: 10px;
-
-    background: transparent;
-
-    color: var(--text-primary);
-
-    font-size: .90rem;
-
-    text-align: left;
-
-    cursor: pointer;
-
-    transition:
-        background .20s ease,
-        color .20s ease;
-
-}
-
-.topbar-dropdown-item:hover {
-
-    background: rgba(255,255,255,.06);
-
-}
-
-.topbar-dropdown-item.danger {
-
-    color: #f87171;
-
-}
-
-.topbar-dropdown-item.danger:hover {
-
-    background: rgba(220,38,38,.15);
-
-}
-
-/* =============================================================================
-   OPEN STATE
-   ============================================================================= */
-
-.topbar-profile.open .topbar-profile-button {
-
-    background: rgba(255,255,255,.08);
-
-}
-
-/* =============================================================================
-   TABLET
-   ============================================================================= */
-
-@media (max-width: 1024px) {
-
-    .topbar {
-
-        padding: 0 24px;
-
-        gap: 18px;
+        width:240px;
 
     }
 
-    .topbar-title {
+    .topbar-right{
 
-        font-size: 1rem;
-
-    }
-
-    .topbar-subtitle {
-
-        font-size: .78rem;
-
-    }
-
-    .topbar-user {
-
-        display: none;
+        width:240px;
 
     }
 
 }
 
-/* =============================================================================
-   MOBILE
-   ============================================================================= */
+@media(max-width:900px){
 
-@media (max-width: 768px) {
+    .topbar-right .user-info{
 
-    .topbar {
-
-        min-height: 64px;
-
-        padding: 0 16px;
-
-        gap: 12px;
+        display:none;
 
     }
 
-    .topbar-menu {
+    .topbar-action span{
 
-        display: inline-flex;
-
-    }
-
-    .topbar-center {
-
-        display: none;
-
-    }
-
-    .topbar-right {
-
-        gap: 6px;
-
-    }
-
-    .topbar-model {
-
-        display: none;
-
-    }
-
-    .topbar-button span {
-
-        display: none;
-
-    }
-
-    .topbar-button {
-
-        width: 40px;
-
-        min-width: 40px;
-
-        height: 40px;
-
-        padding: 0;
-
-    }
-
-    .topbar-divider {
-
-        display: none;
-
-    }
-
-    .topbar-title {
-
-        font-size: .98rem;
-
-    }
-
-    .topbar-subtitle {
-
-        display: none;
-
-    }
-
-    .topbar-status {
-
-        display: none;
+        display:none;
 
     }
 
 }
 
-/* =============================================================================
-   SMALL MOBILE
-   ============================================================================= */
+@media(max-width:768px){
 
-@media (max-width: 480px) {
+    .topbar{
 
-    .topbar {
-
-        min-height: 60px;
-
-        padding: 0 12px;
+        padding:0 16px;
 
     }
 
-    .topbar-left {
+    .topbar-left{
 
-        gap: 12px;
-
-    }
-
-    .topbar-title {
-
-        font-size: .92rem;
+        width:auto;
 
     }
 
-    .topbar-button {
+    .topbar-right{
 
-        width: 38px;
-
-        min-width: 38px;
-
-        height: 38px;
-
-        border-radius: 10px;
+        width:auto;
 
     }
 
-    .topbar-avatar {
+    .topbar-brand span,
+    .topbar-status{
 
-        width: 32px;
-
-        height: 32px;
-
-        font-size: .78rem;
-
-    }
-
-    .topbar-dropdown {
-
-        right: -8px;
-
-        min-width: 220px;
-
-    }
-
-}
-
-/* =============================================================================
-   ANIMATIONS
-   ============================================================================= */
-
-@keyframes topbarSpin {
-
-    from {
-
-        transform: rotate(0deg);
-
-    }
-
-    to {
-
-        transform: rotate(360deg);
-
-    }
-
-}
-
-/* =============================================================================
-   ACCESSIBILITY
-   ============================================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    .topbar,
-    .topbar-button,
-    .topbar-menu,
-    .topbar-model,
-    .topbar-profile-button,
-    .topbar-dropdown {
-
-        transition: none;
-
-    }
-
-    .topbar-button.loading::after {
-
-        animation: none;
+        display:none;
 
     }
 

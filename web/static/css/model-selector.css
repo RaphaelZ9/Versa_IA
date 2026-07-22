@@ -1,0 +1,307 @@
+/* =============================================================================
+   VERSA IA
+   MODEL SELECTOR
+============================================================================= */
+
+.model-selector {
+  position: relative;
+
+  width: 270px;
+
+  user-select: none;
+
+  z-index: 200;
+}
+
+/* =============================================================================
+   TRIGGER
+============================================================================= */
+
+.model-selector-trigger {
+  width: 100%;
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 16px;
+
+  border: none;
+
+  border-radius: 16px;
+
+  background: #1f2937;
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.model-selector-trigger:hover {
+  transform: translateY(-2px);
+
+  border-color: rgba(20, 184, 166, 0.45);
+
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+}
+
+.model-selector-trigger.open {
+  border-color: var(--primary-color);
+
+  box-shadow:
+    0 0 0 1px rgba(20, 184, 166, 0.25),
+    0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* =============================================================================
+   LEFT
+============================================================================= */
+
+.model-selector-left {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+/* =============================================================================
+   ICON
+============================================================================= */
+
+.model-icon {
+  width: 30px;
+
+  height: 30px;
+
+  border-radius: 10px;
+
+  background: rgba(20, 184, 166, 0.12);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 15px;
+
+  flex-shrink: 0;
+}
+
+/* =============================================================================
+   INFO
+============================================================================= */
+
+.model-info {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+}
+
+.model-name {
+  color: #fff;
+
+  font-size: 15px;
+
+  font-weight: 700;
+
+  line-height: 1.1;
+}
+
+.model-provider {
+  margin-top: 3px;
+
+  color: #94a3b8;
+
+  font-size: 11px;
+
+  line-height: 1;
+}
+
+/* =============================================================================
+   ARROW
+============================================================================= */
+
+.model-arrow {
+  width: 18px !important;
+
+  height: 18px !important;
+
+  flex-shrink: 0;
+
+  color: #b7c3d8;
+
+  transition: transform 0.25s ease;
+}
+
+.model-arrow path {
+  vector-effect: non-scaling-stroke;
+}
+
+.model-selector-trigger.open .model-arrow {
+  transform: rotate(180deg);
+}
+
+/* =============================================================================
+   DROPDOWN
+============================================================================= */
+
+.model-dropdown {
+  position: relative;
+
+  top: calc(100% + 10px);
+
+  left: 0;
+
+  width: 100%;
+
+  background: #1f2937;
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  border-radius: 16px;
+
+  overflow: hidden;
+
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.4);
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  transform: translateY(-8px);
+
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease;
+
+  z-index: 500;
+}
+
+.model-dropdown.show {
+  opacity: 1;
+
+  visibility: visible;
+
+  transform: translateY(0);
+}
+
+/* =============================================================================
+   ITEM
+============================================================================= */
+
+.model-item {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 14px 16px;
+
+  cursor: pointer;
+
+  transition: all 0.18s ease;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.model-item:last-child {
+  border-bottom: none;
+}
+
+.model-item:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.model-item.active {
+  background: rgba(20, 184, 166, 0.08);
+}
+
+/* =============================================================================
+   ITEM LEFT
+============================================================================= */
+
+.model-item-left {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 10px;
+}
+
+.model-status {
+  width: 10px;
+
+  height: 10px;
+
+  margin-top: 6px;
+
+  border-radius: 50%;
+
+  background: #22c55e;
+
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.6);
+
+  flex-shrink: 0;
+}
+
+/* =============================================================================
+   ITEM TEXT
+============================================================================= */
+
+.model-item-name {
+  color: #fff;
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+.model-item-description {
+  margin-top: 4px;
+
+  color: #94a3b8;
+
+  font-size: 12px;
+}
+
+.model-item-provider {
+  margin-top: 3px;
+
+  color: #64748b;
+
+  font-size: 11px;
+}
+
+/* =============================================================================
+   CHECK
+============================================================================= */
+
+.model-check {
+  color: var(--primary-color);
+
+  font-size: 18px;
+
+  font-weight: bold;
+}
+
+/* =============================================================================
+   RESPONSIVE
+============================================================================= */
+
+@media (max-width: 900px) {
+  .model-selector {
+    width: 230px;
+  }
+
+  .model-provider {
+    display: none;
+  }
+}

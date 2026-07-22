@@ -1,27 +1,24 @@
 /* =============================================================================
+   VERSA IA
+   HERO.CSS
+   ============================================================================= */
+
+/* =============================================================================
    HERO
    ============================================================================= */
 
 .hero {
+
     display: flex;
-    flex-direction: column;
+
     align-items: center;
+
     justify-content: center;
 
-    width: 100%;
-    max-width: 1100px;
+    overflow-y: auto;
 
-    margin: 0 auto;
+    padding: 48px 32px;
 
-    padding: 60px 32px 48px;
-
-    text-align: center;
-
-    animation: heroFade .35s ease;
-}
-
-.hero.hidden {
-    display: none;
 }
 
 /* =============================================================================
@@ -31,9 +28,16 @@
 .hero-container {
 
     width: 100%;
-    max-width: 760px;
 
-    margin: 0 auto 48px;
+    max-width: 900px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    animation: fadeIn .35s ease;
 
 }
 
@@ -43,116 +47,97 @@
 
 .hero-logo {
 
+    width: 96px;
+
+    height: 96px;
+
+    border-radius: 24px;
+
+    background: linear-gradient(
+        135deg,
+        var(--primary-color),
+        #0f766e
+    );
+
     display: flex;
-    justify-content: center;
+
     align-items: center;
 
-    margin-bottom: 24px;
+    justify-content: center;
+
+    margin-bottom: 28px;
+
+    box-shadow: var(--shadow-lg);
 
 }
 
 .hero-logo img {
 
-    width: 82px;
-    height: 82px;
+    width: 62px;
+
+    height: 62px;
 
     object-fit: contain;
 
-    user-select: none;
-
 }
 
 /* =============================================================================
-   BADGE
+   TITLE
    ============================================================================= */
 
-.hero-badge {
+.hero-title {
 
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 8px 18px;
-
-    margin-bottom: 28px;
-
-    border: 1px solid rgba(255,255,255,.08);
-    border-radius: 999px;
-
-    background: rgba(255,255,255,.03);
-
-    color: var(--primary-color);
-
-    font-size: .82rem;
-    font-weight: 600;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-
-}
-
-/* =============================================================================
-   TÍTULO
-   ============================================================================= */
-
-.hero h1 {
-
-    margin: 0 0 22px;
-
-    color: var(--text-primary);
-
-    font-size: clamp(2.3rem,4vw,3.8rem);
+    font-size: 2.5rem;
 
     font-weight: 700;
 
-    line-height: 1.1;
+    color: var(--text-primary);
 
-    letter-spacing: -.03em;
+    text-align: center;
+
+}
+
+.hero-title strong {
+
+    color: var(--primary-color);
 
 }
 
 /* =============================================================================
-   DESCRIÇÃO
+   SUBTITLE
    ============================================================================= */
 
-.hero p {
+.hero-subtitle {
 
-    max-width: 720px;
+    max-width: 700px;
 
-    margin: 0 auto;
+    margin-top: 18px;
+
+    text-align: center;
 
     color: var(--text-secondary);
 
     font-size: 1.08rem;
 
-    line-height: 1.75;
+    line-height: 1.8;
 
 }
 
 /* =============================================================================
-   ESPAÇAMENTO ENTRE HERO E CARDS
+   QUICK ACTIONS
    ============================================================================= */
 
-.suggestions-grid {
-
-    margin-top: 10px;
-
-}
-
-/* =============================================================================
-   SUGGESTIONS GRID
-   ============================================================================= */
-
-.suggestions-grid {
-
-    display: grid;
-
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-
-    gap: 20px;
+.hero-actions {
 
     width: 100%;
 
-    margin-bottom: 42px;
+    margin-top: 48px;
+
+    display: grid;
+
+    grid-template-columns: repeat(2,1fr);
+
+    gap: 18px;
 
 }
 
@@ -160,123 +145,137 @@
    CARD
    ============================================================================= */
 
-.suggestion-card {
+.hero-card {
 
     display: flex;
-    flex-direction: column;
+
     align-items: flex-start;
 
-    width: 100%;
+    gap: 16px;
 
-    min-height: 190px;
-
-    padding: 24px;
-
-    border: 1px solid rgba(255,255,255,.08);
-    border-radius: 18px;
+    padding: 22px;
 
     background: var(--surface-color);
 
+    border: 1px solid var(--border-color);
+
+    border-radius: var(--radius-lg);
+
     cursor: pointer;
 
-    transition:
-        transform .22s ease,
-        border-color .22s ease,
-        box-shadow .22s ease,
-        background .22s ease;
+    transition: var(--transition);
+
+}
+
+.hero-card:hover{
+
+    transform:translateY(-5px);
+
+    border-color:rgba(20,184,166,.20);
+
+    box-shadow:
+
+        0 14px 32px rgba(0,0,0,.28);
 
 }
 
 /* =============================================================================
-   HOVER
+   ICON
    ============================================================================= */
 
-.suggestion-card:hover {
+.hero-card-icon {
 
-    transform: translateY(-4px);
+    width: 48px;
 
-    border-color: rgba(88,166,255,.35);
-
-    background: rgba(255,255,255,.03);
-
-    box-shadow: 0 12px 28px rgba(0,0,0,.20);
-
-}
-
-/* =============================================================================
-   ÍCONE
-   ============================================================================= */
-
-.suggestion-icon {
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 52px;
-    height: 52px;
-
-    margin-bottom: 20px;
+    height: 48px;
 
     border-radius: 14px;
 
-    background: rgba(88,166,255,.10);
+    display: flex;
 
-    font-size: 1.5rem;
+    align-items: center;
+
+    justify-content: center;
+
+    background: rgba(20,184,166,.12);
+
+    color: var(--primary-color);
+
+    flex-shrink: 0;
+
+}
+
+.hero-card-icon svg {
+
+    width: 24px;
+
+    height: 24px;
 
 }
 
 /* =============================================================================
-   TÍTULO
+   CONTENT
    ============================================================================= */
 
-.suggestion-card h3 {
+.hero-card-content {
 
-    margin: 0 0 12px;
+    flex: 1;
 
-    color: var(--text-primary);
+}
 
-    font-size: 1.08rem;
+.hero-card-title {
+
+    font-size: 1rem;
 
     font-weight: 600;
 
-    line-height: 1.3;
+    color: var(--text-primary);
 
 }
 
-/* =============================================================================
-   DESCRIÇÃO
-   ============================================================================= */
+.hero-card-description {
 
-.suggestion-card p {
-
-    margin: 0;
+    margin-top: 6px;
 
     color: var(--text-secondary);
 
-    font-size: .94rem;
+    font-size: .9rem;
 
     line-height: 1.6;
 
-    text-align: left;
+}
+
+/* =============================================================================
+   PROMPTS
+   ============================================================================= */
+
+.hero-prompts {
+
+    width: 100%;
+
+    margin-top: 50px;
+
+}
+
+.hero-prompts-title {
+
+    margin-bottom: 18px;
+
+    text-align: center;
+
+    font-size: .95rem;
+
+    font-weight: 600;
+
+    color: var(--text-secondary);
 
 }
 
 /* =============================================================================
-   ESTADO ATIVO
+   PROMPT LIST
    ============================================================================= */
 
-.suggestion-card:active {
-
-    transform: scale(.98);
-
-}
-
-/* =============================================================================
-   QUICK PROMPTS
-   ============================================================================= */
-
-.quick-prompts {
+.hero-prompt-list {
 
     display: flex;
 
@@ -286,209 +285,154 @@
 
     gap: 12px;
 
-    width: 100%;
-
-    max-width: 920px;
-
-    margin: 0 auto;
-
 }
 
-.quick-prompt {
+/* =============================================================================
+   CHIP
+   ============================================================================= */
 
-    display: inline-flex;
+.hero-chip {
 
-    align-items: center;
+    padding: 10px 16px;
 
-    justify-content: center;
+    background: rgba(255,255,255,.04);
 
-    padding: 12px 18px;
-
-    border: 1px solid rgba(255,255,255,.08);
+    border: 1px solid var(--border-color);
 
     border-radius: 999px;
 
-    background: rgba(255,255,255,.02);
-
     color: var(--text-secondary);
-
-    font-size: .92rem;
-
-    font-weight: 500;
 
     cursor: pointer;
 
     transition:
-        background .20s ease,
-        border-color .20s ease,
-        color .20s ease,
-        transform .20s ease;
+    transform .2s ease,
+    background .2s ease,
+    border-color .2s ease;
+
+    white-space: nowrap;
 
 }
 
-.quick-prompt:hover {
+.hero-chip:hover {
 
-    color: var(--text-primary);
+    background: var(--primary-color);
 
-    background: rgba(255,255,255,.05);
+    border-color: var(--primary-color);
 
-    border-color: rgba(88,166,255,.35);
+    color: #fff;
 
     transform: translateY(-2px);
 
 }
 
-.quick-prompt:active {
+/* =============================================================================
+   FOOTER
+   ============================================================================= */
 
-    transform: scale(.98);
+.hero-footer {
+
+    margin-top: 50px;
+
+    text-align: center;
+
+    color: var(--text-secondary);
+
+    font-size: .82rem;
+
+    opacity: .75;
 
 }
 
 /* =============================================================================
-   ANIMAÇÕES
+   RESPONSIVE
    ============================================================================= */
 
-@keyframes heroFade {
+@media (max-width:900px){
 
-    from {
+    .hero-actions{
 
-        opacity: 0;
-
-        transform: translateY(18px);
-
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform: translateY(0);
-
-    }
-
-}
-
-/* =============================================================================
-   TABLET
-   ============================================================================= */
-
-@media (max-width: 1024px) {
-
-    .hero {
-
-        padding: 48px 24px 40px;
-
-    }
-
-    .hero-container {
-
-        margin-bottom: 40px;
-
-    }
-
-    .suggestions-grid {
-
-        grid-template-columns: repeat(2, minmax(220px, 1fr));
+        grid-template-columns:1fr;
 
     }
 
 }
 
-/* =============================================================================
-   MOBILE
-   ============================================================================= */
+@media (max-width:768px){
 
-@media (max-width: 768px) {
+    .hero{
 
-    .hero {
-
-        padding: 36px 20px;
+        padding:28px 32px 20px;
 
     }
 
-    .hero-logo img {
+    .hero-logo{
 
-        width: 68px;
+        width:72px;
+        height:72px;
 
-        height: 68px;
+        border-radius:18px;
+
+        margin-bottom:18px;
+    }
+
+    .hero-logo img{
+
+        width:44px;
+        height:44px;
 
     }
 
-    .hero h1 {
+    .hero-title{
 
-        font-size: 2rem;
+        font-size:2.2rem;
 
-    }
+        font-weight:700;
 
-    .hero p {
-
-        font-size: .98rem;
-
-        line-height: 1.6;
+        letter-spacing:-.5px;
 
     }
 
-    .suggestions-grid {
+    .hero-subtitle{
 
-        grid-template-columns: 1fr;
-
-        gap: 16px;
-
-    }
-
-    .suggestion-card {
-
-        min-height: auto;
-
-        padding: 20px;
-
-    }
-
-    .quick-prompts {
-
-        gap: 10px;
-
-    }
-
-    .quick-prompt {
-
-        width: 100%;
-
-        justify-content: center;
+        margin-top:12px;
+        line-height:1.7;
 
     }
 
 }
 
-/* =============================================================================
-   MOBILE PEQUENO
-   ============================================================================= */
+@media (max-width:480px){
 
-@media (max-width: 480px) {
+    .hero{
 
-    .hero {
-
-        padding: 28px 16px;
+        padding:12px 32px 20px;
 
     }
 
-    .hero-badge {
+    .hero-title{
 
-        font-size: .74rem;
-
-        padding: 7px 14px;
+        font-size:1.7rem;
 
     }
 
-    .hero h1 {
+    .hero-subtitle{
 
-        font-size: 1.75rem;
+        font-size:.95rem;
 
     }
 
-    .hero p {
+    .hero-card{
 
-        font-size: .92rem;
+        padding:18px;
+
+    }
+
+    .hero-chip{
+
+        width:100%;
+
+        text-align:center;
 
     }
 

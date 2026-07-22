@@ -1,449 +1,850 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <!-- ==========================================================
-         METADADOS
-    =========================================================== -->
 
-    <meta charset="UTF-8" />
+<head>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
 
-    <meta
-      name="description"
-      content="Versa IA - Assistente Inteligente da Versa Energia"
-    />
-
-    <meta name="theme-color" content="#0B1220" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Versa IA</title>
 
-    <!-- ==========================================================
-         FONTES
-    =========================================================== -->
+    <link rel="icon"
+          href="/static/img/logo.png">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
 
-    <!-- ==========================================================
-         CSS
-    =========================================================== -->
+    <link rel="stylesheet"
+          href="/static/css/style.css">
 
-    <link rel="stylesheet" href="/static/css/style.css" />
-  </head>
+</head>
 
-  <body>
-    <!-- ==========================================================
-         LAYOUT PRINCIPAL
-    =========================================================== -->
+<body>
 
-    <div class="layout">
-      <!-- ======================================================
-             SIDEBAR
-        ======================================================= -->
+<div class="layout">
 
-      <aside class="sidebar">
-        <!-- ==============================================
-                 LOGO
-            =============================================== -->
+    <!-- ===========================================================
+         SIDEBAR
+    ============================================================ -->
 
-        <header class="sidebar-header">
-          <div class="brand">
-            <div class="brand-logo">
-              <img src="/static/img/logo.png" alt="Versa IA" />
-            </div>
+    <aside class="sidebar">
 
-            <div class="brand-info">
-              <h1>Versa IA</h1>
+        <!-- HEADER -->
 
-              <span> Inteligência Artificial Corporativa </span>
-            </div>
-          </div>
+        <div class="sidebar-header">
 
-          <button id="newConversation" class="new-chat">
-            <span class="icon"> + </span>
+            <div class="sidebar-logo">
 
-            <span> Nova conversa </span>
-          </button>
-        </header>
+                <div class="sidebar-logo-icon">
 
-        <!-- ==============================================
-                 HISTÓRICO
-            =============================================== -->
+                    <img src="{{ url_for('static', filename='img/logo.png') }}"
+                         alt="Versa IA">
 
-        <section class="sidebar-history">
-          <div class="sidebar-title">Conversas</div>
-
-          <div id="conversationList" class="conversation-list">
-            <div class="history-empty">
-              <div class="history-empty-icon">💬</div>
-
-              <strong> Nenhuma conversa </strong>
-
-              <p>
-                Clique em
-                <strong>Nova conversa</strong>
-                para iniciar.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <!-- ==============================================
-                 ACESSOS RÁPIDOS
-            =============================================== -->
-
-        <section class="sidebar-shortcuts">
-          <div class="sidebar-title">Acessos rápidos</div>
-
-          <button class="shortcut">📄 Documentos</button>
-
-          <button class="shortcut">📚 Base de Conhecimento</button>
-
-          <button class="shortcut">📊 Relatórios</button>
-
-          <button class="shortcut">⚙️ Processos</button>
-
-          <button class="shortcut">💡 Consultas</button>
-        </section>
-
-        <!-- ==============================================
-                 STATUS
-            =============================================== -->
-
-        <footer class="sidebar-footer">
-          <div class="sidebar-title">Ambiente</div>
-
-          <div class="infra-item">
-            <span> Modelo </span>
-
-            <strong id="modelName"> Qwen3 8B </strong>
-          </div>
-
-          <div class="infra-item">
-            <span> Engine </span>
-
-            <strong> Ollama </strong>
-          </div>
-
-          <div class="infra-item">
-            <span> Banco </span>
-
-            <strong> Supabase </strong>
-          </div>
-
-          <div class="infra-item">
-            <span> Status </span>
-
-            <strong class="online"> ● Online </strong>
-          </div>
-
-          <div class="infra-item">
-            <span> Ambiente </span>
-
-            <strong> Desenvolvimento </strong>
-          </div>
-
-          <div class="infra-item">
-            <span> Versão </span>
-
-            <strong> Beta </strong>
-          </div>
-        </footer>
-      </aside>
-
-      <!-- ======================================================
-             WORKSPACE
-        ======================================================= -->
-
-      <main class="workspace">
-        <!-- ======================================================
-                 TOPBAR
-            ======================================================= -->
-
-        <header class="topbar">
-          <div class="topbar-left">
-            <h2 id="conversationTitle">Nova conversa</h2>
-
-            <span class="conversation-subtitle">
-              Assistente Inteligente da Versa Energia
-            </span>
-          </div>
-
-          <div class="topbar-right">
-            <div class="status-pill">
-              <span class="status-dot"></span>
-
-              Online
-            </div>
-
-            <div id="currentModel" class="model-pill">Qwen3 8B</div>
-          </div>
-        </header>
-
-        <!-- ======================================================
-                 CONTEÚDO
-            ======================================================= -->
-
-        <section class="content">
-          <!-- ==================================================
-                     HERO
-                =================================================== -->
-
-          <section id="hero" class="hero active">
-            <div class="hero-container">
-              <div class="hero-logo">
-                <img src="/static/img/logo.png" alt="Versa IA" />
-              </div>
-
-              <span class="hero-badge">
-                Inteligência Artificial Corporativa
-              </span>
-
-              <h1>Como posso ajudar você hoje?</h1>
-
-              <p>
-                Consulte documentos, pesquise na base de conhecimento, obtenha
-                apoio técnico, gere resumos e acelere suas atividades utilizando
-                a Versa IA.
-              </p>
-            </div>
-
-            <!-- ==============================================
-                         CARDS
-                    =============================================== -->
-
-            <div class="suggestions-grid">
-              <button class="suggestion-card">
-                <span class="suggestion-icon"> 📄 </span>
-
-                <h3>Documentos</h3>
-
-                <p>
-                  Analise PDFs, contratos, procedimentos e arquivos internos.
-                </p>
-              </button>
-
-              <button class="suggestion-card">
-                <span class="suggestion-icon"> 📚 </span>
-
-                <h3>Conhecimento</h3>
-
-                <p>Consulte normas, processos e políticas corporativas.</p>
-              </button>
-
-              <button class="suggestion-card">
-                <span class="suggestion-icon"> 📊 </span>
-
-                <h3>Relatórios</h3>
-
-                <p>Gere análises, indicadores e resumos.</p>
-              </button>
-
-              <button class="suggestion-card">
-                <span class="suggestion-icon"> ⚙️ </span>
-
-                <h3>Automações</h3>
-
-                <p>Execute tarefas e acompanhe processos internos.</p>
-              </button>
-            </div>
-
-            <!-- ==============================================
-                         PROMPTS RÁPIDOS
-                    =============================================== -->
-
-            <div class="quick-prompts">
-              <button class="quick-prompt">Resumir um documento</button>
-
-              <button class="quick-prompt">Explicar um procedimento</button>
-
-              <button class="quick-prompt">
-                Pesquisar na base de conhecimento
-              </button>
-
-              <button class="quick-prompt">Criar documentação técnica</button>
-
-              <button class="quick-prompt">Analisar um contrato</button>
-
-              <button class="quick-prompt">Gerar um relatório executivo</button>
-            </div>
-          </section>
-
-          <!-- ======================================================
-                     CHAT
-                ======================================================= -->
-
-          <section id="chatArea" class="chat">
-            <!-- ==============================================
-                         ÁREA DE ROLAGEM DAS MENSAGENS
-                    =============================================== -->
-
-            <div id="chatScroll" class="chat-scroll">
-              <!--
-                            Todas as mensagens serão
-                            inseridas dinamicamente pelo JavaScript.
-                        -->
-            </div>
-
-            <!-- ==============================================
-                         INDICADOR DE PROCESSAMENTO
-                    =============================================== -->
-
-            <div id="thinkingIndicator" class="thinking hidden">
-              <div class="thinking-avatar">AI</div>
-
-              <div class="thinking-body">
-                <span class="thinking-title">
-                  Versa IA está processando...
-                </span>
-
-                <div class="thinking-dots">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-              </div>
-            </div>
-          </section>
-        </section>
-
-        <!-- ======================================================
-             COMPOSER
-        ======================================================= -->
-
-        <footer class="composer">
-          <div class="composer-wrapper">
-            <div class="composer-surface">
-              <!-- ==============================================
-                         TOOLBAR
-                    =============================================== -->
-
-              <div class="composer-toolbar">
-                <div class="toolbar-left">
-                  <button
-                    id="attachButton"
-                    class="tool-button"
-                    type="button"
-                    title="Anexar arquivo"
-                  >
-                    📎
-                  </button>
-
-                  <button
-                    id="voiceButton"
-                    class="tool-button"
-                    type="button"
-                    title="Entrada por voz"
-                  >
-                    🎤
-                  </button>
                 </div>
 
-                <div class="toolbar-right">
-                  <label class="toolbar-label" for="modelSelector">
-                    Modelo
-                  </label>
+                <div class="sidebar-logo-text">
 
-                  <select id="modelSelector" class="model-selector">
-                    <option value="qwen3">Qwen3 8B</option>
+                    <div class="sidebar-logo-title">
+                        Versa IA
+                    </div>
 
-                    <option value="qwen25">Qwen2.5 3B</option>
-                  </select>
+                    <div class="sidebar-logo-subtitle">
+                        Assistente Inteligente
+                    </div>
+
                 </div>
-              </div>
 
-              <!-- ==============================================
-                         ÁREA DE DIGITAÇÃO
-                    =============================================== -->
+            </div>
 
-              <div class="composer-box">
-                <textarea
-                  id="promptInput"
-                  class="prompt-input"
-                  rows="1"
-                  placeholder="Digite sua pergunta..."
-                  autocomplete="off"
-                  spellcheck="false"
-                ></textarea>
+            <button id="newChatButton"
+                    class="sidebar-new-chat">
 
-                <button
-                  id="sendButton"
-                  class="send-button"
-                  type="button"
-                  title="Enviar mensagem"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="22"
-                    height="22"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     fill="none"
+                     viewBox="0 0 24 24"
+                     stroke="currentColor">
 
-                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                  </svg>
+                    <path stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M12 4v16m8-8H4"/>
+
+                </svg>
+
+                <span>Nova conversa</span>
+
+            </button>
+
+        </div>
+
+        <!-- CONTENT -->
+
+        <div class="sidebar-content">
+
+            <div class="sidebar-section-title">
+
+                Conversas
+
+            </div>
+
+            <div id="conversationList"
+                 class="conversation-list">
+
+                             <!-- Estado vazio -->
+
+                <div class="conversation-empty">
+
+                    <div class="conversation-icon">
+
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             fill="none"
+                             viewBox="0 0 24 24"
+                             stroke="currentColor">
+
+                            <path stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  d="M8 10h8M8 14h5m-7 6h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+
+                        </svg>
+
+                    </div>
+
+                    <div>
+
+                        Nenhuma conversa iniciada.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- FOOTER -->
+
+        <div class="sidebar-footer">
+
+            <div class="sidebar-user">
+
+                <div class="sidebar-user-avatar">
+
+                    U
+
+                </div>
+
+                <div class="sidebar-user-info">
+
+                    <div class="sidebar-user-name">
+
+                        Usuário
+
+                    </div>
+
+                    <div class="sidebar-user-role">
+
+                        Versa IA
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="sidebar-footer-actions">
+
+                <button class="sidebar-footer-button">
+
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         fill="none"
+                         viewBox="0 0 24 24"
+                         stroke="currentColor">
+
+                        <path stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M13 16h-1v-4h-1m1-4h.01M21 12A9 9 0 113 12a9 9 0 0118 0z"/>
+
+                    </svg>
+
+                    <span>Ajuda</span>
+
                 </button>
-              </div>
 
-              <!-- ==============================================
-                         RODAPÉ
-                    =============================================== -->
+                <button class="sidebar-footer-button">
 
-              <div class="composer-footer">
-                <span> A IA pode produzir informações incorretas. </span>
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         fill="none"
+                         viewBox="0 0 24 24"
+                         stroke="currentColor">
 
-                <span>
-                  Sempre valide informações críticas antes de utilizá-las.
-                </span>
-              </div>
+                        <path stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M12 8c-2.21 0-4 1.79-4 4m8 0a4 4 0 00-4-4m0 8h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+
+                    </svg>
+
+                    <span>Configurações</span>
+
+                </button>
+
             </div>
-          </div>
-        </footer>
-      </main>
+
+            <div class="sidebar-version">
+
+                Versa IA • v1.0
+
+            </div>
+
+        </div>
+
+    </aside>
+
+    <!-- ===========================================================
+         OVERLAY MOBILE
+    ============================================================ -->
+
+    <div class="sidebar-overlay"></div>
+
+    <!-- ===========================================================
+         WORKSPACE
+    ============================================================ -->
+
+    <main class="workspace">
+
+        <!-- =======================================================
+             TOPBAR
+        ======================================================== -->
+
+<header class="topbar">
+
+    <!-- ESQUERDA -->
+    <div class="topbar-left">
+
+        <div class="topbar-brand">
+
+            <h1>Versa IA</h1>
+
+            <span>Assistente Inteligente Corporativo</span>
+
+            <div class="topbar-status">
+
+                <span class="status-dot"></span>
+
+                IA Online
+
+            </div>
+
+        </div>
+
     </div>
 
-    <!-- ======================================================
-         MODAIS
-    ======================================================= -->
+    <!-- CENTRO -->
+    <div class="topbar-center">
 
-    <div id="modalContainer"></div>
+        <div class="model-selector" id="modelSelector">
 
-    <!-- ======================================================
-         TOASTS
-    ======================================================= -->
+            <button
+                id="modelSelectorTrigger"
+                class="model-selector-trigger"
+                type="button">
 
-    <div id="toastContainer"></div>
+                <div class="model-selector-left">
 
-    <!-- ======================================================
-         OVERLAY
-    ======================================================= -->
+                    <div class="model-icon">
 
-    <div id="overlay"></div>
+                        🧠
 
-    <!-- ======================================================
-         JAVASCRIPT
-    ======================================================= -->
+                    </div>
 
-    <!-- Biblioteca Markdown -->
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+                    <div class="model-info">
 
-    <!-- Biblioteca Highlight -->
-    <script src="https://cdn.jsdelivr.net/npm/highlight.js/lib/common.min.js"></script>
+                        <span
+                            id="currentModelName"
+                            class="model-name">
 
-    <!-- Aplicação -->
+                            Qwen 3 8B
 
-    <script src="/static/js/chat.js"></script>
-  </body>
+                        </span>
+
+                        <span
+                            id="currentModelProvider"
+                            class="model-provider">
+
+                            Ollama Local
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <svg
+                    class="model-arrow"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor">
+
+                    <path
+                        fill-rule="evenodd"
+                        d="M5.23 7.21a.75.75 0 011.06.02L10 11.17l3.71-3.94a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                        clip-rule="evenodd"/>
+
+                </svg>
+
+            </button>
+
+            <div
+                id="modelDropdown"
+                class="model-dropdown hidden">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- DIREITA -->
+    <div class="topbar-right">
+
+        <button
+            class="topbar-action"
+            id="btnNewChat">
+
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 fill="none"
+                 viewBox="0 0 24 24"
+                 stroke="currentColor">
+
+                <path stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 4v16m8-8H4"/>
+
+            </svg>
+
+            <span>Nova conversa</span>
+
+        </button>
+
+        <button
+            class="user-button">
+
+            <div class="user-avatar">
+
+                R
+
+            </div>
+
+            <div class="user-info">
+
+                <span class="user-name">
+
+                    Raphael
+
+                </span>
+
+                <span class="user-role">
+
+                    Administrador
+
+                </span>
+
+            </div>
+
+        </button>
+
+    </div>
+
+</header>    
+
+    <!-- =======================================================
+             HERO
+        ======================================================== -->
+
+        <section id="hero"
+                 class="hero active">
+
+            <div class="hero-container">
+
+                <!-- Título -->
+
+                <h1 class="hero-title">
+
+                    Bem-vindo ao <strong>Versa IA</strong>
+
+                </h1>
+
+                <!-- Subtítulo -->
+
+                <p class="hero-subtitle">
+
+                    Seu assistente inteligente para consultas, documentos,
+                    automações e apoio às atividades da empresa.
+
+                </p>
+
+                <!-- Sugestões -->
+
+                <div class="hero-actions">
+
+                    <div class="hero-card prompt-card"
+                         data-prompt="Resuma este documento">
+
+                        <div class="hero-card-icon">
+
+                            📄
+
+                        </div>
+
+                        <div class="hero-card-content">
+
+                            <div class="hero-card-title">
+
+                                Resumir documento
+
+                            </div>
+
+                            <div class="hero-card-description">
+
+                                Gere um resumo objetivo de um PDF ou texto.
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="hero-card prompt-card"
+                         data-prompt="Explique este código">
+
+                        <div class="hero-card-icon">
+
+                            💻
+
+                        </div>
+
+                        <div class="hero-card-content">
+
+                            <div class="hero-card-title">
+
+                                Explicar código
+
+                            </div>
+
+                            <div class="hero-card-description">
+
+                                Analise código-fonte e explique seu funcionamento.
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="hero-card prompt-card"
+                         data-prompt="Crie uma consulta SQL">
+
+                        <div class="hero-card-icon">
+
+                            🗄️
+
+                        </div>
+
+                        <div class="hero-card-content">
+
+                            <div class="hero-card-title">
+
+                                Criar SQL
+
+                            </div>
+
+                            <div class="hero-card-description">
+
+                                Gere consultas SQL otimizadas para Oracle.
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="hero-card prompt-card"
+                         data-prompt="Analise este arquivo">
+
+                        <div class="hero-card-icon">
+
+                            📊
+
+                        </div>
+
+                        <div class="hero-card-content">
+
+                            <div class="hero-card-title">
+
+                                Analisar arquivos
+
+                            </div>
+
+                            <div class="hero-card-description">
+
+                                PDFs, Excel, Word, imagens e outros documentos.
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Prompts rápidos -->
+
+                <div class="hero-prompts">
+
+                    <div class="hero-prompts-title">
+
+                        Sugestões rápidas
+
+                    </div>
+
+                    <div class="hero-prompt-list">
+
+                        <button class="hero-chip"
+                                data-prompt="Explique passo a passo">
+
+                            Explique passo a passo
+
+                        </button>
+
+                        <button class="hero-chip"
+                                data-prompt="Melhore este texto">
+
+                            Melhorar texto
+
+                        </button>
+
+                        <button class="hero-chip"
+                                data-prompt="Escreva um e-mail">
+
+                            Escrever e-mail
+
+                        </button>
+
+                        <button class="hero-chip"
+                                data-prompt="Gerar código PL/SQL">
+
+                            Gerar PL/SQL
+
+                        </button>
+
+                        <button class="hero-chip"
+                                data-prompt="Criar documentação">
+
+                            Criar documentação
+
+                        </button>
+
+                        <button class="hero-chip"
+                                data-prompt="Explicar consulta SQL">
+
+                            Explicar SQL
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- Rodapé -->
+
+                <div class="hero-footer">
+
+                    IA desenvolvida para auxiliar nas atividades da empresa.
+
+                </div>
+
+            </div>
+
+        </section>
+
+    <!-- =======================================================
+             CHAT
+        ======================================================== -->
+
+        <section id="chat"
+                 class="chat">
+
+            <div class="chat-scroll">
+
+                <div id="chatContainer"
+                     class="chat-container">
+
+                    <!--
+                        As mensagens serão inseridas aqui
+                        dinamicamente pelo JavaScript.
+                    -->
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- =======================================================
+             THINKING
+        ======================================================== -->
+
+        <div id="thinking"
+             class="thinking">
+
+            <div class="chat-container">
+
+                <div class="chat-message assistant">
+
+                    <div class="chat-avatar">
+
+                        IA
+
+                    </div>
+
+                    <div class="chat-body">
+
+                        <div class="chat-bubble">
+
+                            <div class="chat-thinking">
+
+                                <div class="chat-thinking-dot"></div>
+
+                                <div class="chat-thinking-dot"></div>
+
+                                <div class="chat-thinking-dot"></div>
+
+                                <span>Pensando...</span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- =======================================================
+             COMPOSER
+        ======================================================== -->
+
+        <footer class="composer">
+
+            <div class="composer-container">
+
+                <form id="chatForm"
+                      class="composer-form">
+
+                    <!-- ==========================================
+                         ANEXOS
+                    =========================================== -->
+
+                    <div id="attachmentList"
+                         class="composer-attachments">
+
+                    </div>
+
+                    <!-- ==========================================
+                         BOX
+                    =========================================== -->
+
+                    <div id="composerBox"
+                         class="composer-box">
+
+                        <!-- Botão anexar -->
+
+                        <button type="button"
+                                id="attachButton"
+                                class="composer-button">
+
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 fill="none"
+                                 viewBox="0 0 24 24"
+                                 stroke="currentColor">
+
+                                <path stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      stroke-width="2"
+                                      d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828L18 9.828a4 4 0 10-5.656-5.656L5.757 10.757a6 6 0 108.486 8.486L20.5 13"/>
+
+                            </svg>
+
+                        </button>
+
+                        <!-- Arquivo oculto -->
+
+                        <input type="file"
+                               id="fileInput"
+                               hidden
+                               multiple>
+
+                        <!-- Campo -->
+
+                        <textarea
+                            id="promptInput"
+                            class="composer-input"
+                            rows="1"
+                            autocomplete="off"
+                            placeholder="Como posso ajudar hoje?"></textarea>
+
+                        <!-- Ações -->
+
+                        <div class="composer-actions">
+
+                            <button id="stopButton"
+                                    type="button"
+                                    class="composer-button composer-stop hidden">
+
+                                ■
+
+                            </button>
+
+                            <button id="sendButton"
+                                    type="submit"
+                                    class="composer-button composer-send">
+
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     fill="none"
+                                     viewBox="0 0 24 24"
+                                     stroke="currentColor">
+
+                                    <path stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                          stroke-width="2"
+                                          d="M5 12l14-7-4 7 4 7-14-7z"/>
+
+                                </svg>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </footer>
+
+            </main>
+
+</div>
+
+<!-- ===========================================================
+     OVERLAY GLOBAL
+=========================================================== -->
+
+<div class="overlay hidden"
+     id="overlay"></div>
+
+<!-- ===========================================================
+     MODAL CONTAINER
+=========================================================== -->
+
+<div id="modalContainer"></div>
+
+<!-- ===========================================================
+     TOAST CONTAINER
+=========================================================== -->
+
+<div id="toastContainer"></div>
+
+<!-- ===========================================================
+     TEMPLATES (UTILIZADOS PELO JAVASCRIPT)
+=========================================================== -->
+
+<template id="userMessageTemplate">
+
+    <div class="chat-message user">
+
+        <div class="chat-avatar">
+            U
+        </div>
+
+        <div class="chat-body">
+
+            <div class="chat-bubble"></div>
+
+            <div class="chat-footer">
+
+                <span class="chat-time"></span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</template>
+
+<template id="assistantMessageTemplate">
+
+    <div class="chat-message assistant">
+
+        <div class="chat-avatar">
+            IA
+        </div>
+
+        <div class="chat-body">
+
+            <div class="chat-bubble"></div>
+
+            <div class="chat-footer">
+
+                <span class="chat-time"></span>
+
+                <div class="chat-actions">
+
+                    <button class="chat-action copy-message"
+                            title="Copiar resposta">
+
+                        📋
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</template>
+
+<!-- ===========================================================
+     JAVASCRIPT
+=========================================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+
+<script src="/static/js/model-selector.js"></script>
+<script src="/static/js/app.js"></script>
+
+</body>
+
 </html>
