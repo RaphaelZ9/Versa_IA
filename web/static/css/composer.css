@@ -1,0 +1,640 @@
+/* =============================================================================
+   COMPOSER
+   ============================================================================= */
+
+.composer {
+
+    position: sticky;
+
+    bottom: 0;
+
+    z-index: 100;
+
+    width: 100%;
+
+    padding: 18px 32px 28px;
+
+    background:
+        linear-gradient(
+            to top,
+            var(--background-color) 70%,
+            transparent
+        );
+
+}
+
+/* =============================================================================
+   WRAPPER
+   ============================================================================= */
+
+.composer-wrapper {
+
+    width: 100%;
+
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+}
+
+/* =============================================================================
+   SURFACE
+   ============================================================================= */
+
+.composer-surface {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 14px;
+
+    padding: 16px;
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    border-radius: 22px;
+
+    background: var(--surface-color);
+
+    box-shadow:
+        0 10px 40px rgba(0,0,0,.18);
+
+    backdrop-filter: blur(18px);
+
+}
+
+/* =============================================================================
+   TOOLBAR
+   ============================================================================= */
+
+.composer-toolbar {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 16px;
+
+}
+
+/* =============================================================================
+   TOOLBAR LEFT
+   ============================================================================= */
+
+.toolbar-left {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+/* =============================================================================
+   TOOLBAR RIGHT
+   ============================================================================= */
+
+.toolbar-right {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+/* =============================================================================
+   TOOL BUTTON
+   ============================================================================= */
+
+.tool-button {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 40px;
+
+    height: 40px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: rgba(255,255,255,.04);
+
+    color: var(--text-secondary);
+
+    cursor: pointer;
+
+    transition:
+        background .20s ease,
+        color .20s ease,
+        transform .20s ease;
+
+}
+
+.tool-button:hover {
+
+    background: rgba(255,255,255,.08);
+
+    color: var(--text-primary);
+
+    transform: translateY(-2px);
+
+}
+
+.tool-button:active {
+
+    transform: scale(.96);
+
+}
+
+/* =============================================================================
+   LABEL
+   ============================================================================= */
+
+.toolbar-label {
+
+    color: var(--text-secondary);
+
+    font-size: .85rem;
+
+    font-weight: 500;
+
+}
+
+/* =============================================================================
+   SELECT
+   ============================================================================= */
+
+.model-selector {
+
+    min-width: 150px;
+
+    height: 38px;
+
+    padding: 0 14px;
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    border-radius: 10px;
+
+    background: rgba(255,255,255,.03);
+
+    color: var(--text-primary);
+
+    font-size: .90rem;
+
+    outline: none;
+
+    cursor: pointer;
+
+    transition:
+        border-color .20s ease,
+        background .20s ease;
+
+}
+
+.model-selector:hover {
+
+    background: rgba(255,255,255,.05);
+
+}
+
+.model-selector:focus {
+
+    border-color: var(--primary-color);
+
+}
+
+/* =============================================================================
+   COMPOSER BOX
+   ============================================================================= */
+
+.composer-box {
+
+    display: flex;
+
+    align-items: flex-end;
+
+    gap: 14px;
+
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    border-radius: 18px;
+
+    background: rgba(255,255,255,.02);
+
+    transition:
+        border-color .20s ease,
+        background .20s ease,
+        box-shadow .20s ease;
+
+}
+
+.composer-box:focus-within {
+
+    border-color: var(--primary-color);
+
+    background: rgba(255,255,255,.04);
+
+    box-shadow:
+        0 0 0 3px rgba(88,166,255,.12);
+
+}
+
+/* =============================================================================
+   PROMPT INPUT
+   ============================================================================= */
+
+.prompt-input {
+
+    flex: 1;
+
+    min-height: 28px;
+
+    max-height: 220px;
+
+    padding: 8px 4px;
+
+    border: none;
+
+    outline: none;
+
+    resize: none;
+
+    overflow-y: auto;
+
+    background: transparent;
+
+    color: var(--text-primary);
+
+    font-family: inherit;
+
+    font-size: 1rem;
+
+    line-height: 1.6;
+
+}
+
+.prompt-input::placeholder {
+
+    color: var(--text-secondary);
+
+    opacity: .75;
+
+}
+
+.prompt-input::-webkit-scrollbar {
+
+    width: 6px;
+
+}
+
+.prompt-input::-webkit-scrollbar-thumb {
+
+    border-radius: 999px;
+
+    background: rgba(255,255,255,.12);
+
+}
+
+.prompt-input::-webkit-scrollbar-track {
+
+    background: transparent;
+
+}
+
+/* =============================================================================
+   SEND BUTTON
+   ============================================================================= */
+
+.send-button {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    width: 48px;
+
+    height: 48px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    background: var(--primary-color);
+
+    color: #ffffff;
+
+    cursor: pointer;
+
+    transition:
+        transform .20s ease,
+        filter .20s ease,
+        box-shadow .20s ease;
+
+}
+
+.send-button svg {
+
+    width: 20px;
+
+    height: 20px;
+
+}
+
+.send-button:hover {
+
+    transform: translateY(-2px);
+
+    filter: brightness(1.08);
+
+    box-shadow:
+        0 8px 22px rgba(88,166,255,.35);
+
+}
+
+.send-button:active {
+
+    transform: scale(.96);
+
+}
+
+.send-button:disabled {
+
+    opacity: .45;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+    box-shadow: none;
+
+}
+
+/* =============================================================================
+   ESTADOS
+   ============================================================================= */
+
+.prompt-input:disabled {
+
+    cursor: not-allowed;
+
+    opacity: .60;
+
+}
+
+.model-selector:disabled {
+
+    cursor: not-allowed;
+
+    opacity: .60;
+
+}
+
+.tool-button:disabled {
+
+    cursor: not-allowed;
+
+    opacity: .45;
+
+    transform: none;
+
+}
+
+.tool-button:disabled:hover {
+
+    background: rgba(255,255,255,.04);
+
+    color: var(--text-secondary);
+
+}
+
+/* =============================================================================
+   COMPOSER FOOTER
+   ============================================================================= */
+
+.composer-footer {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 16px;
+
+    padding: 0 4px;
+
+    color: var(--text-secondary);
+
+    font-size: .82rem;
+
+    line-height: 1.4;
+
+}
+
+.composer-footer span {
+
+    opacity: .75;
+
+}
+
+/* =============================================================================
+   TABLET
+   ============================================================================= */
+
+@media (max-width: 1024px) {
+
+    .composer {
+
+        padding: 16px 24px 24px;
+
+    }
+
+    .composer-wrapper {
+
+        max-width: 100%;
+
+    }
+
+}
+
+/* =============================================================================
+   MOBILE
+   ============================================================================= */
+
+@media (max-width: 768px) {
+
+    .composer {
+
+        padding: 14px 16px 20px;
+
+    }
+
+    .composer-surface {
+
+        padding: 14px;
+
+        border-radius: 18px;
+
+    }
+
+    .composer-toolbar {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 12px;
+
+    }
+
+    .toolbar-left,
+    .toolbar-right {
+
+        width: 100%;
+
+        justify-content: space-between;
+
+    }
+
+    .model-selector {
+
+        flex: 1;
+
+        min-width: 0;
+
+    }
+
+    .composer-box {
+
+        gap: 10px;
+
+        padding: 10px;
+
+    }
+
+    .prompt-input {
+
+        font-size: .96rem;
+
+    }
+
+    .send-button {
+
+        width: 44px;
+
+        height: 44px;
+
+    }
+
+    .composer-footer {
+
+        flex-direction: column;
+
+        align-items: center;
+
+        text-align: center;
+
+        gap: 6px;
+
+        font-size: .78rem;
+
+    }
+
+}
+
+/* =============================================================================
+   MOBILE PEQUENO
+   ============================================================================= */
+
+@media (max-width: 480px) {
+
+    .composer {
+
+        padding: 12px;
+
+    }
+
+    .composer-surface {
+
+        padding: 12px;
+
+        border-radius: 16px;
+
+    }
+
+    .tool-button {
+
+        width: 36px;
+
+        height: 36px;
+
+        border-radius: 10px;
+
+        font-size: .95rem;
+
+    }
+
+    .send-button {
+
+        width: 42px;
+
+        height: 42px;
+
+        border-radius: 12px;
+
+    }
+
+    .send-button svg {
+
+        width: 18px;
+
+        height: 18px;
+
+    }
+
+    .prompt-input {
+
+        font-size: .92rem;
+
+        line-height: 1.5;
+
+    }
+
+}
+
+/* =============================================================================
+   ACESSIBILIDADE
+   ============================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .composer-box,
+    .tool-button,
+    .send-button,
+    .model-selector {
+
+        transition: none;
+
+    }
+
+}

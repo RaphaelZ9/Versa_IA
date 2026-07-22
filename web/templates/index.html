@@ -1,931 +1,449 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
+  <head>
+    <!-- ==========================================================
+         METADADOS
+    =========================================================== -->
 
-<head>
+    <meta charset="UTF-8" />
 
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
-
-    <meta
-        name="description"
-        content="Versa IA - Assistente Inteligente da Versa Energia">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <meta
-        name="theme-color"
-        content="#0B1220">
+      name="description"
+      content="Versa IA - Assistente Inteligente da Versa Energia"
+    />
+
+    <meta name="theme-color" content="#0B1220" />
 
     <title>Versa IA</title>
 
-    <!-- ======================================================
-         GOOGLE FONTS
-    ======================================================= -->
+    <!-- ==========================================================
+         FONTES
+    =========================================================== -->
 
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
 
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-          rel="stylesheet">
-
-    <!-- ======================================================
-         CSS
-    ======================================================= -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
     <link
-        rel="stylesheet"
-        href="/static/css/style.css">
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
-</head>
+    <!-- ==========================================================
+         CSS
+    =========================================================== -->
 
-<body>
+    <link rel="stylesheet" href="/static/css/style.css" />
+  </head>
 
-<div class="layout">
+  <body>
+    <!-- ==========================================================
+         LAYOUT PRINCIPAL
+    =========================================================== -->
 
-<!-- ==========================================================
-     SIDEBAR
-========================================================== -->
+    <div class="layout">
+      <!-- ======================================================
+             SIDEBAR
+        ======================================================= -->
 
-<aside class="sidebar">
+      <aside class="sidebar">
+        <!-- ==============================================
+                 LOGO
+            =============================================== -->
 
-    <!-- ======================================================
-         LOGO
-    ======================================================= -->
-
-    <header class="sidebar-header">
-
-        <div class="brand">
-
+        <header class="sidebar-header">
+          <div class="brand">
             <div class="brand-logo">
-
-                <img
-                    src="/static/img/logo.png"
-                    alt="Versa IA">
-
+              <img src="/static/img/logo.png" alt="Versa IA" />
             </div>
 
             <div class="brand-info">
+              <h1>Versa IA</h1>
 
-                <h1>
-
-                    Versa IA
-
-                </h1>
-
-                <span>
-
-                    Assistente Inteligente
-
-                </span>
-
+              <span> Inteligência Artificial Corporativa </span>
             </div>
+          </div>
 
-        </div>
+          <button id="newConversation" class="new-chat">
+            <span class="icon"> + </span>
 
-        <button
+            <span> Nova conversa </span>
+          </button>
+        </header>
 
-            id="newConversation"
+        <!-- ==============================================
+                 HISTÓRICO
+            =============================================== -->
 
-            class="new-chat">
+        <section class="sidebar-history">
+          <div class="sidebar-title">Conversas</div>
 
-            <span class="icon">
-
-                ＋
-
-            </span>
-
-            <span>
-
-                Nova conversa
-
-            </span>
-
-        </button>
-
-    </header>
-
-
-
-    <!-- ======================================================
-         HISTÓRICO
-    ======================================================= -->
-
-    <section class="sidebar-history">
-
-        <div class="sidebar-title">
-
-            Conversas
-
-        </div>
-
-        <div
-
-            id="conversationList"
-
-            class="conversation-list">
-
+          <div id="conversationList" class="conversation-list">
             <div class="history-empty">
+              <div class="history-empty-icon">💬</div>
 
-                <div class="history-empty-icon">
+              <strong> Nenhuma conversa </strong>
 
-                    💬
-
-                </div>
-
-                <strong>
-
-                    Nenhuma conversa
-
-                </strong>
-
-                <p>
-
-                    Clique em
-                    <b>Nova conversa</b>
-                    para iniciar.
-
-                </p>
-
+              <p>
+                Clique em
+                <strong>Nova conversa</strong>
+                para iniciar.
+              </p>
             </div>
+          </div>
+        </section>
 
-        </div>
+        <!-- ==============================================
+                 ACESSOS RÁPIDOS
+            =============================================== -->
 
-    </section>
+        <section class="sidebar-shortcuts">
+          <div class="sidebar-title">Acessos rápidos</div>
 
+          <button class="shortcut">📄 Documentos</button>
 
+          <button class="shortcut">📚 Base de Conhecimento</button>
 
-    <!-- ======================================================
-         FAVORITOS
-    ======================================================= -->
+          <button class="shortcut">📊 Relatórios</button>
 
-    <section class="sidebar-shortcuts">
+          <button class="shortcut">⚙️ Processos</button>
 
-        <div class="sidebar-title">
+          <button class="shortcut">💡 Consultas</button>
+        </section>
 
-            Atalhos
+        <!-- ==============================================
+                 STATUS
+            =============================================== -->
 
-        </div>
+        <footer class="sidebar-footer">
+          <div class="sidebar-title">Ambiente</div>
 
-        <button class="shortcut">
+          <div class="infra-item">
+            <span> Modelo </span>
 
-            ⚡ Mercado Livre
+            <strong id="modelName"> Qwen3 8B </strong>
+          </div>
 
-        </button>
+          <div class="infra-item">
+            <span> Engine </span>
 
-        <button class="shortcut">
+            <strong> Ollama </strong>
+          </div>
 
-            📄 Contratos
+          <div class="infra-item">
+            <span> Banco </span>
 
-        </button>
+            <strong> Supabase </strong>
+          </div>
 
-        <button class="shortcut">
+          <div class="infra-item">
+            <span> Status </span>
 
-            📊 Indicadores
+            <strong class="online"> ● Online </strong>
+          </div>
 
-        </button>
+          <div class="infra-item">
+            <span> Ambiente </span>
 
-        <button class="shortcut">
+            <strong> Desenvolvimento </strong>
+          </div>
 
-            🤖 Hermes
+          <div class="infra-item">
+            <span> Versão </span>
 
-        </button>
+            <strong> Beta </strong>
+          </div>
+        </footer>
+      </aside>
 
-        <button class="shortcut">
+      <!-- ======================================================
+             WORKSPACE
+        ======================================================= -->
 
-            📚 Conhecimento
+      <main class="workspace">
+        <!-- ======================================================
+                 TOPBAR
+            ======================================================= -->
 
-        </button>
-
-    </section>
-
-
-
-    <!-- ======================================================
-         SISTEMA
-    ======================================================= -->
-
-    <footer class="sidebar-footer">
-
-        <div class="sidebar-title">
-
-            Sistema
-
-        </div>
-
-        <div class="infra-item">
-
-            <span>
-
-                Modelo
-
-            </span>
-
-            <strong id="modelName">
-
-                Qwen3 8B
-
-            </strong>
-
-        </div>
-
-        <div class="infra-item">
-
-            <span>
-
-                Engine
-
-            </span>
-
-            <strong>
-
-                Ollama
-
-            </strong>
-
-        </div>
-
-        <div class="infra-item">
-
-            <span>
-
-                Banco
-
-            </span>
-
-            <strong>
-
-                Supabase
-
-            </strong>
-
-        </div>
-
-        <div class="infra-item">
-
-            <span>
-
-                Status
-
-            </span>
-
-            <strong class="online">
-
-                ● Online
-
-            </strong>
-
-        </div>
-
-        <div class="infra-item">
-
-            <span>
-
-                Ambiente
-
-            </span>
-
-            <strong>
-
-                Desenvolvimento
-
-            </strong>
-
-        </div>
-
-        <div class="infra-item">
-
-            <span>
-
-                Versão
-
-            </span>
-
-            <strong>
-
-                V3 Preview
-
-            </strong>
-
-        </div>
-
-    </footer>
-
-</aside>
-
-
-
-<!-- ==========================================================
-     WORKSPACE
-========================================================== -->
-
-<main class="workspace">
-
-    <!-- ======================================================
-         TOPBAR
-    ======================================================= -->
-
-    <header class="topbar">
-
-        <div class="topbar-left">
-
-            <h2
-
-                id="conversationTitle">
-
-                Nova conversa
-
-            </h2>
+        <header class="topbar">
+          <div class="topbar-left">
+            <h2 id="conversationTitle">Nova conversa</h2>
 
             <span class="conversation-subtitle">
-
-                Inteligência Artificial Corporativa
-
+              Assistente Inteligente da Versa Energia
             </span>
+          </div>
 
-        </div>
-
-        <div class="topbar-right">
-
+          <div class="topbar-right">
             <div class="status-pill">
+              <span class="status-dot"></span>
 
-                <span class="status-dot"></span>
-
-                Online
-
+              Online
             </div>
 
-            <div
+            <div id="currentModel" class="model-pill">Qwen3 8B</div>
+          </div>
+        </header>
 
-                id="currentModel"
+        <!-- ======================================================
+                 CONTEÚDO
+            ======================================================= -->
 
-                class="model-pill">
+        <section class="content">
+          <!-- ==================================================
+                     HERO
+                =================================================== -->
 
-                Qwen3 8B
+          <section id="hero" class="hero active">
+            <div class="hero-container">
+              <div class="hero-logo">
+                <img src="/static/img/logo.png" alt="Versa IA" />
+              </div>
 
+              <span class="hero-badge">
+                Inteligência Artificial Corporativa
+              </span>
+
+              <h1>Como posso ajudar você hoje?</h1>
+
+              <p>
+                Consulte documentos, pesquise na base de conhecimento, obtenha
+                apoio técnico, gere resumos e acelere suas atividades utilizando
+                a Versa IA.
+              </p>
             </div>
 
-        </div>
+            <!-- ==============================================
+                         CARDS
+                    =============================================== -->
 
-    </header>
+            <div class="suggestions-grid">
+              <button class="suggestion-card">
+                <span class="suggestion-icon"> 📄 </span>
 
-
-
-    <!-- ======================================================
-         CONTENT
-    ======================================================= -->
-
-    <section class="content">
-
-       <!-- ======================================================
-         HERO
-    ======================================================= -->
-
-    <section
-        id="hero"
-        class="hero active">
-
-        <div class="hero-container">
-
-            <div class="hero-logo">
-
-                <img
-                    src="/static/img/logo.png"
-                    alt="Versa IA">
-
-            </div>
-
-            <span class="hero-badge">
-
-                IA Corporativa • Versa Energia
-
-            </span>
-
-            <h1>
-
-                Como posso ajudar você hoje?
-
-            </h1>
-
-            <p>
-
-                Analise documentos, responda dúvidas técnicas,
-                gere SQL Oracle, consulte procedimentos internos,
-                explique códigos, automatize tarefas e apoie
-                as operações da Versa Energia.
-
-            </p>
-
-        </div>
-
-
-
-        <!-- ===============================================
-             SUGESTÕES
-        ================================================ -->
-
-        <div class="suggestions-grid">
-
-            <button class="suggestion-card">
-
-                <span class="suggestion-icon">⚡</span>
-
-                <h3>Mercado Livre</h3>
+                <h3>Documentos</h3>
 
                 <p>
-
-                    Tire dúvidas sobre comercialização
-                    de energia.
-
+                  Analise PDFs, contratos, procedimentos e arquivos internos.
                 </p>
+              </button>
 
-            </button>
+              <button class="suggestion-card">
+                <span class="suggestion-icon"> 📚 </span>
 
+                <h3>Conhecimento</h3>
 
+                <p>Consulte normas, processos e políticas corporativas.</p>
+              </button>
 
-            <button class="suggestion-card">
-
-                <span class="suggestion-icon">📄</span>
-
-                <h3>Contratos</h3>
-
-                <p>
-
-                    Analise cláusulas,
-                    contratos e documentos.
-
-                </p>
-
-            </button>
-
-
-
-            <button class="suggestion-card">
-
-                <span class="suggestion-icon">📊</span>
+              <button class="suggestion-card">
+                <span class="suggestion-icon"> 📊 </span>
 
                 <h3>Relatórios</h3>
 
-                <p>
+                <p>Gere análises, indicadores e resumos.</p>
+              </button>
 
-                    Gere relatórios,
-                    indicadores e dashboards.
+              <button class="suggestion-card">
+                <span class="suggestion-icon"> ⚙️ </span>
 
-                </p>
+                <h3>Automações</h3>
 
-            </button>
-
-
-
-            <button class="suggestion-card">
-
-                <span class="suggestion-icon">🤖</span>
-
-                <h3>Hermes</h3>
-
-                <p>
-
-                    Consulte informações
-                    corporativas.
-
-                </p>
-
-            </button>
-
-        </div>
-
-
-
-        <!-- ===============================================
-             PROMPTS RÁPIDOS
-        ================================================ -->
-
-        <div class="quick-prompts">
-
-            <button class="quick-prompt">
-
-                Como funciona o Mercado Livre de Energia?
-
-            </button>
-
-            <button class="quick-prompt">
-
-                Explique este contrato.
-
-            </button>
-
-            <button class="quick-prompt">
-
-                Resuma um PDF.
-
-            </button>
-
-            <button class="quick-prompt">
-
-                Gerar SQL Oracle.
-
-            </button>
-
-            <button class="quick-prompt">
-
-                Criar documentação técnica.
-
-            </button>
-
-            <button class="quick-prompt">
-
-                Consultar base de conhecimento.
-
-            </button>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ======================================================
-         CHAT
-    ======================================================= -->
-
-    <section
-        id="chatArea"
-        class="chat">
-
-        <div
-            id="chatScroll"
-            class="chat-scroll">
-
-            <!-- ===========================================
-                 As mensagens serão inseridas aqui
-            ============================================ -->
-
-
-
-            <!-- ===========================================
-                 TEMPLATE DA MENSAGEM DO USUÁRIO
-                 (remover quando integrar com JS)
-            ============================================ -->
-
-            <!--
-
-            <article class="message message-user">
-
-                <div class="message-avatar">
-
-                    D
-
-                </div>
-
-                <div class="message-content">
-
-                    <div class="message-header">
-
-                        <span class="message-author">
-
-                            Daniel
-
-                        </span>
-
-                        <span class="message-time">
-
-                            14:32
-
-                        </span>
-
-                    </div>
-
-                    <div class="message-body">
-
-                        Como faço para...
-
-                    </div>
-
-                </div>
-
-            </article>
-
-            -->
-
-
-
-            <!-- ===========================================
-                 TEMPLATE DA IA
-                 (remover quando integrar)
-            ============================================ -->
-
-            <!--
-
-            <article class="message message-ai">
-
-                <div class="message-avatar">
-
-                    AI
-
-                </div>
-
-                <div class="message-content">
-
-                    <div class="message-header">
-
-                        <span class="message-author">
-
-                            Versa IA
-
-                        </span>
-
-                        <span class="message-time">
-
-                            14:32
-
-                        </span>
-
-                    </div>
-
-                    <div class="message-body markdown-body">
-
-                        A resposta será renderizada aqui.
-
-                    </div>
-
-                    <div class="message-actions">
-
-                        <button>
-
-                            📋 Copiar
-
-                        </button>
-
-                        <button>
-
-                            🔄 Regenerar
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-            -->
-
-
-
-        </div>
-
-
-
-        <!-- ===============================================
-             THINKING
-        ================================================ -->
-
-        <div
-            id="thinkingIndicator"
-            class="thinking">
-
-            <div class="thinking-avatar">
-
-                AI
-
+                <p>Execute tarefas e acompanhe processos internos.</p>
+              </button>
             </div>
 
-            <div class="thinking-content">
+            <!-- ==============================================
+                         PROMPTS RÁPIDOS
+                    =============================================== -->
 
-                <span>
+            <div class="quick-prompts">
+              <button class="quick-prompt">Resumir um documento</button>
 
-                    Versa IA está pensando...
+              <button class="quick-prompt">Explicar um procedimento</button>
 
+              <button class="quick-prompt">
+                Pesquisar na base de conhecimento
+              </button>
+
+              <button class="quick-prompt">Criar documentação técnica</button>
+
+              <button class="quick-prompt">Analisar um contrato</button>
+
+              <button class="quick-prompt">Gerar um relatório executivo</button>
+            </div>
+          </section>
+
+          <!-- ======================================================
+                     CHAT
+                ======================================================= -->
+
+          <section id="chatArea" class="chat">
+            <!-- ==============================================
+                         ÁREA DE ROLAGEM DAS MENSAGENS
+                    =============================================== -->
+
+            <div id="chatScroll" class="chat-scroll">
+              <!--
+                            Todas as mensagens serão
+                            inseridas dinamicamente pelo JavaScript.
+                        -->
+            </div>
+
+            <!-- ==============================================
+                         INDICADOR DE PROCESSAMENTO
+                    =============================================== -->
+
+            <div id="thinkingIndicator" class="thinking hidden">
+              <div class="thinking-avatar">AI</div>
+
+              <div class="thinking-body">
+                <span class="thinking-title">
+                  Versa IA está processando...
                 </span>
 
                 <div class="thinking-dots">
-
-                    <span></span>
-                    <span></span>
-                    <span></span>
-
+                  <span></span>
+                  <span></span>
+                  <span></span>
                 </div>
-
+              </div>
             </div>
+          </section>
+        </section>
 
-        </div>
+        <!-- ======================================================
+             COMPOSER
+        ======================================================= -->
 
-    </section>     
+        <footer class="composer">
+          <div class="composer-wrapper">
+            <div class="composer-surface">
+              <!-- ==============================================
+                         TOOLBAR
+                    =============================================== -->
 
-</section>
-
-<!-- ===========================================================
-     COMPOSER
-=========================================================== -->
-
-<footer class="composer">
-
-    <div class="composer-wrapper">
-
-        <!-- ===============================================
-             TOOLBAR
-        ================================================ -->
-
-        <div class="composer-toolbar">
-
-            <div class="toolbar-left">
-
-                <button
+              <div class="composer-toolbar">
+                <div class="toolbar-left">
+                  <button
                     id="attachButton"
                     class="tool-button"
-                    title="Anexar arquivo">
-
+                    type="button"
+                    title="Anexar arquivo"
+                  >
                     📎
+                  </button>
 
-                </button>
-
-                <button
+                  <button
                     id="voiceButton"
                     class="tool-button"
-                    title="Entrada por voz">
-
+                    type="button"
+                    title="Entrada por voz"
+                  >
                     🎤
+                  </button>
+                </div>
 
-                </button>
-
-            </div>
-
-            <div class="toolbar-right">
-
-                <label
-                    class="toolbar-label"
-                    for="modelSelector">
-
+                <div class="toolbar-right">
+                  <label class="toolbar-label" for="modelSelector">
                     Modelo
+                  </label>
 
-                </label>
+                  <select id="modelSelector" class="model-selector">
+                    <option value="qwen3">Qwen3 8B</option>
 
-                <select
-                    id="modelSelector"
-                    class="model-selector">
+                    <option value="qwen25">Qwen2.5 3B</option>
+                  </select>
+                </div>
+              </div>
 
-                    <option value="qwen3">
+              <!-- ==============================================
+                         ÁREA DE DIGITAÇÃO
+                    =============================================== -->
 
-                        Qwen3 8B
+              <div class="composer-box">
+                <textarea
+                  id="promptInput"
+                  class="prompt-input"
+                  rows="1"
+                  placeholder="Digite sua pergunta..."
+                  autocomplete="off"
+                  spellcheck="false"
+                ></textarea>
 
-                    </option>
-
-                    <option value="qwen25">
-
-                        Qwen2.5 3B
-
-                    </option>
-
-                </select>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- ===============================================
-             PROMPT
-        ================================================ -->
-
-        <div class="composer-box">
-
-            <textarea
-
-                id="promptInput"
-
-                class="prompt-input"
-
-                rows="1"
-
-                autocomplete="off"
-
-                spellcheck="false"
-
-                placeholder="Pergunte qualquer coisa para a Versa IA...">
-
-            </textarea>
-
-            <button
-
-                id="sendButton"
-
-                class="send-button"
-
-                title="Enviar mensagem">
-
-                <svg
-
+                <button
+                  id="sendButton"
+                  class="send-button"
+                  type="button"
+                  title="Enviar mensagem"
+                >
+                  <svg
                     xmlns="http://www.w3.org/2000/svg"
-
+                    width="22"
+                    height="22"
                     viewBox="0 0 24 24"
-
                     fill="none"
-
                     stroke="currentColor"
-
                     stroke-width="2"
-
                     stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
 
-                    stroke-linejoin="round">
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                  </svg>
+                </button>
+              </div>
 
-                    <line
-                        x1="22"
-                        y1="2"
-                        x2="11"
-                        y2="13">
+              <!-- ==============================================
+                         RODAPÉ
+                    =============================================== -->
 
-                    </line>
+              <div class="composer-footer">
+                <span> A IA pode produzir informações incorretas. </span>
 
-                    <polygon
-                        points="22 2 15 22 11 13 2 9 22 2">
-
-                    </polygon>
-
-                </svg>
-
-            </button>
-
-        </div>
-
-
-
-        <!-- ===============================================
-             RODAPÉ
-        ================================================ -->
-
-        <div class="composer-footer">
-
-            <span>
-
-                A Versa IA pode cometer erros.
-
-            </span>
-
-            <span>
-
-                Sempre valide informações importantes.
-
-            </span>
-
-        </div>
-
+                <span>
+                  Sempre valide informações críticas antes de utilizá-las.
+                </span>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </main>
     </div>
 
-</footer>
+    <!-- ======================================================
+         MODAIS
+    ======================================================= -->
 
-</main>
+    <div id="modalContainer"></div>
 
-</div>
+    <!-- ======================================================
+         TOASTS
+    ======================================================= -->
 
+    <div id="toastContainer"></div>
 
+    <!-- ======================================================
+         OVERLAY
+    ======================================================= -->
 
-<!-- ===========================================================
-     MODAIS FUTUROS
-=========================================================== -->
+    <div id="overlay"></div>
 
-<div
-    id="modalContainer">
+    <!-- ======================================================
+         JAVASCRIPT
+    ======================================================= -->
 
-</div>
+    <!-- Biblioteca Markdown -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
+    <!-- Biblioteca Highlight -->
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js/lib/common.min.js"></script>
 
+    <!-- Aplicação -->
 
-<!-- ===========================================================
-     TOASTS
-=========================================================== -->
-
-<div
-    id="toastContainer">
-
-</div>
-
-
-
-<!-- ===========================================================
-     OVERLAY
-=========================================================== -->
-
-<div
-    id="overlay">
-
-</div>
-
-
-
-<!-- ===========================================================
-     JAVASCRIPT
-=========================================================== -->
-
-<script src="/static/js/chat.js"></script>
-
-</body>
-
+    <script src="/static/js/chat.js"></script>
+  </body>
 </html>
-
-    

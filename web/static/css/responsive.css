@@ -1,0 +1,608 @@
+/* =============================================================================
+   LARGE DESKTOP
+   ============================================================================= */
+
+@media (min-width: 1600px) {
+
+    .workspace {
+
+        max-width: 1800px;
+
+        margin: 0 auto;
+
+    }
+
+    .chat-scroll {
+
+        max-width: 1100px;
+
+    }
+
+    .composer-wrapper {
+
+        max-width: 1100px;
+
+    }
+
+}
+
+/* =============================================================================
+   DESKTOP
+   ============================================================================= */
+
+@media (max-width: 1440px) {
+
+    .workspace {
+
+        min-width: 0;
+
+    }
+
+    .chat-scroll {
+
+        max-width: 980px;
+
+    }
+
+    .composer-wrapper {
+
+        max-width: 980px;
+
+    }
+
+}
+
+/* =============================================================================
+   NOTEBOOK
+   ============================================================================= */
+
+@media (max-width: 1280px) {
+
+    .workspace {
+
+        overflow: hidden;
+
+    }
+
+    .chat-scroll {
+
+        padding-left: 28px;
+
+        padding-right: 28px;
+
+    }
+
+    .composer {
+
+        padding-left: 24px;
+
+        padding-right: 24px;
+
+    }
+
+}
+
+/* =============================================================================
+   GLOBAL LAYOUT
+   ============================================================================= */
+
+.workspace {
+
+    display: flex;
+
+    flex-direction: column;
+
+    flex: 1;
+
+    min-width: 0;
+
+    min-height: 100vh;
+
+    overflow: hidden;
+
+}
+
+.main-content {
+
+    display: flex;
+
+    flex-direction: column;
+
+    flex: 1;
+
+    min-height: 0;
+
+    overflow: hidden;
+
+}
+
+/* =============================================================================
+   GLOBAL CONTAINERS
+   ============================================================================= */
+
+.container-fluid {
+
+    width: 100%;
+
+    margin: 0 auto;
+
+}
+
+.content-width {
+
+    width: 100%;
+
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+}
+
+/* =============================================================================
+   OVERFLOW FIXES
+   ============================================================================= */
+
+.workspace,
+.chat,
+.hero,
+.composer,
+.topbar {
+
+    min-width: 0;
+
+}
+
+.chat-scroll,
+.conversation-list {
+
+    overscroll-behavior: contain;
+
+}
+
+/* =============================================================================
+   TABLET
+   ============================================================================= */
+
+@media (max-width: 1024px) {
+
+    .layout {
+
+        grid-template-columns: 280px 1fr;
+
+    }
+
+    .workspace {
+
+        width: 100%;
+
+    }
+
+    .topbar {
+
+        padding-inline: 24px;
+
+    }
+
+    .hero-container,
+    .chat-scroll,
+    .composer-wrapper {
+
+        max-width: 100%;
+
+    }
+
+}
+
+/* =============================================================================
+   MOBILE
+   ============================================================================= */
+
+@media (max-width: 768px) {
+
+    .layout {
+
+        display: block;
+
+    }
+
+    .workspace {
+
+        width: 100%;
+
+        min-height: 100vh;
+
+    }
+
+    .main-content {
+
+        width: 100%;
+
+    }
+
+    .hero {
+
+        padding: 28px 16px;
+
+    }
+
+    .hero-container {
+
+        width: 100%;
+
+    }
+
+    .suggestions-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .chat-scroll {
+
+        width: 100%;
+
+    }
+
+    .composer {
+
+        width: 100%;
+
+    }
+
+    .composer-wrapper {
+
+        width: 100%;
+
+    }
+
+    .topbar {
+
+        width: 100%;
+
+    }
+
+}
+
+/* =============================================================================
+   SMALL MOBILE
+   ============================================================================= */
+
+@media (max-width: 480px) {
+
+    .hero {
+
+        padding: 20px 12px;
+
+    }
+
+    .hero-logo {
+
+        width: 68px;
+
+        height: 68px;
+
+    }
+
+    .hero h1 {
+
+        font-size: 1.8rem;
+
+    }
+
+    .hero p {
+
+        font-size: .95rem;
+
+    }
+
+    .quick-prompts {
+
+        gap: 8px;
+
+    }
+
+    .quick-prompt {
+
+        width: 100%;
+
+        justify-content: center;
+
+    }
+
+}
+
+/* =============================================================================
+   GLOBAL SPACING
+   ============================================================================= */
+
+@media (max-width: 768px) {
+
+    .hero,
+    .chat-scroll,
+    .composer {
+
+        scroll-margin-top: 72px;
+
+    }
+
+    .message {
+
+        max-width: 100%;
+
+    }
+
+    .message-content {
+
+        min-width: 0;
+
+    }
+
+    .message-body table {
+
+        display: block;
+
+        overflow-x: auto;
+
+        white-space: nowrap;
+
+    }
+
+    .message-body pre {
+
+        overflow-x: auto;
+
+    }
+
+}
+
+/* =============================================================================
+   LANDSCAPE
+   ============================================================================= */
+
+@media (max-width: 900px) and (orientation: landscape) {
+
+    .topbar {
+
+        min-height: 60px;
+
+    }
+
+    .hero {
+
+        padding-top: 24px;
+
+        padding-bottom: 24px;
+
+    }
+
+    .chat-scroll {
+
+        padding-bottom: 120px;
+
+    }
+
+    .composer {
+
+        padding-bottom: 16px;
+
+    }
+
+}
+
+/* =============================================================================
+   MODERN VIEWPORT
+   ============================================================================= */
+
+@supports (height: 100dvh) {
+
+    .workspace {
+
+        min-height: 100dvh;
+
+    }
+
+    .sidebar {
+
+        height: 100dvh;
+
+    }
+
+}
+
+@supports (height: 100svh) {
+
+    .workspace {
+
+        min-height: 100svh;
+
+    }
+
+}
+
+/* =============================================================================
+   SAFE AREA
+   ============================================================================= */
+
+@supports (padding: max(0px)) {
+
+    .topbar {
+
+        padding-top: env(safe-area-inset-top);
+
+    }
+
+    .composer {
+
+        padding-bottom: max(
+            20px,
+            env(safe-area-inset-bottom)
+        );
+
+    }
+
+    .sidebar {
+
+        padding-bottom: env(safe-area-inset-bottom);
+
+    }
+
+}
+
+/* =============================================================================
+   GLOBAL ACCESSIBILITY
+   ============================================================================= */
+
+:focus-visible {
+
+    outline: 2px solid var(--primary-color);
+
+    outline-offset: 2px;
+
+}
+
+::selection {
+
+    background: rgba(59,130,246,.30);
+
+    color: var(--text-primary);
+
+}
+
+/* =============================================================================
+   MOTION REDUCTION
+   ============================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+
+        scroll-behavior: auto;
+
+    }
+
+    * {
+
+        animation: none !important;
+
+        transition: none !important;
+
+        scroll-behavior: auto !important;
+
+    }
+
+}
+
+/* =============================================================================
+   HIGH CONTRAST
+   ============================================================================= */
+
+@media (prefers-contrast: more) {
+
+    .message-user .message-bubble,
+    .sidebar,
+    .topbar,
+    .composer-surface {
+
+        border: 1px solid rgba(255,255,255,.25);
+
+    }
+
+    .conversation-item.active {
+
+        border-width: 2px;
+
+    }
+
+}
+
+/* =============================================================================
+   PRINT
+   ============================================================================= */
+
+@media print {
+
+    .sidebar,
+    .topbar,
+    .composer,
+    .hero,
+    .thinking {
+
+        display: none !important;
+
+    }
+
+    .workspace,
+    .chat {
+
+        display: block;
+
+        width: 100%;
+
+        overflow: visible;
+
+    }
+
+    .chat-scroll {
+
+        overflow: visible;
+
+        max-width: 100%;
+
+        padding: 0;
+
+    }
+
+    .message {
+
+        page-break-inside: avoid;
+
+        break-inside: avoid;
+
+    }
+
+}
+
+/* =============================================================================
+   FINAL GLOBAL FIXES
+   ============================================================================= */
+
+html,
+body {
+
+    min-width: 320px;
+
+    overflow-x: hidden;
+
+}
+
+img,
+svg,
+canvas,
+video {
+
+    max-width: 100%;
+
+}
+
+button,
+input,
+select,
+textarea {
+
+    font: inherit;
+
+}
+
+table {
+
+    border-spacing: 0;
+
+}
+
+*,
+*::before,
+*::after {
+
+    box-sizing: border-box;
+
+}

@@ -1,297 +1,1070 @@
-/*=====================================================
-    SIDEBAR
-=====================================================*/
+/* =============================================================================
+   SIDEBAR
+   ============================================================================= */
 
-.sidebar{
+.sidebar {
 
-    background:var(--sidebar);
+    display: flex;
 
-    border-right:1px solid var(--border);
+    flex-direction: column;
 
-    padding:28px;
+    flex-shrink: 0;
 
-    gap:28px;
+    width: 300px;
 
-}
+    height: 100vh;
 
-/*=====================================================
-    HEADER
-=====================================================*/
+    background: var(--surface-color);
 
-.sidebar-header{
+    border-right: 1px solid rgba(255,255,255,.06);
 
-    display:flex;
+    overflow: hidden;
 
-    flex-direction:column;
-
-    gap:24px;
+    transition:
+        width .25s ease,
+        transform .25s ease;
 
 }
 
-/*=====================================================
-    BRAND
-=====================================================*/
+/* =============================================================================
+   HEADER
+   ============================================================================= */
 
-.brand{
+.sidebar-header {
 
-    display:flex;
+    display: flex;
 
-    align-items:center;
+    flex-direction: column;
 
-    gap:16px;
+    gap: 20px;
 
-}
+    padding: 24px 20px;
 
-.brand-logo{
-
-    width:64px;
-
-    height:64px;
-
-    border-radius:18px;
-
-    overflow:hidden;
-
-    background:white;
-
-    flex-shrink:0;
-
-    box-shadow:var(--shadow);
+    border-bottom: 1px solid rgba(255,255,255,.06);
 
 }
 
-.brand-info{
+/* =============================================================================
+   LOGO
+   ============================================================================= */
 
-    display:flex;
+.sidebar-logo {
 
-    flex-direction:column;
+    display: flex;
 
-}
+    align-items: center;
 
-.brand-info h1{
+    gap: 14px;
 
-    font-size:20px;
+    text-decoration: none;
 
-    font-weight:700;
-
-}
-
-.brand-info span{
-
-    margin-top:4px;
-
-    font-size:14px;
-
-    color:var(--text-muted);
+    color: inherit;
 
 }
 
-/*=====================================================
-    NOVA CONVERSA
-=====================================================*/
+.sidebar-logo-icon {
 
-.new-chat{
+    display: flex;
 
-    height:56px;
+    align-items: center;
 
-    border-radius:16px;
+    justify-content: center;
 
-    background:var(--primary);
+    width: 46px;
 
-    color:white;
+    height: 46px;
 
-    font-size:17px;
+    border-radius: 14px;
 
-    font-weight:600;
+    background: linear-gradient(
+        135deg,
+        var(--primary-color),
+        var(--primary-hover)
+    );
 
-    display:flex;
+    color: #ffffff;
 
-    justify-content:center;
+    font-size: 1.2rem;
 
-    align-items:center;
+    font-weight: 700;
 
-    gap:10px;
-
-}
-
-.new-chat:hover{
-
-    background:var(--primary-hover);
-
-    transform:translateY(-2px);
+    box-shadow:
+        0 10px 24px rgba(0,0,0,.18);
 
 }
 
-/*=====================================================
-    TÍTULOS
-=====================================================*/
+.sidebar-logo-text {
 
-.sidebar-title{
+    display: flex;
 
-    font-size:12px;
+    flex-direction: column;
 
-    text-transform:uppercase;
-
-    letter-spacing:2px;
-
-    color:var(--text-muted);
-
-    margin-bottom:14px;
+    gap: 2px;
 
 }
 
-/*=====================================================
-    HISTÓRICO
-=====================================================*/
+.sidebar-logo-title {
 
-.sidebar-history{
+    color: var(--text-primary);
 
-    flex:1;
+    font-size: 1rem;
 
-    overflow:hidden;
+    font-weight: 700;
 
-    display:flex;
-
-    flex-direction:column;
+    line-height: 1.2;
 
 }
 
-.conversation-list{
+.sidebar-logo-subtitle {
 
-    overflow-y:auto;
+    color: var(--text-secondary);
 
-    display:flex;
-
-    flex-direction:column;
-
-    gap:8px;
-
-    padding-right:4px;
+    font-size: .78rem;
 
 }
 
-.history-empty{
+/* =============================================================================
+   NEW CONVERSATION BUTTON
+   ============================================================================= */
 
-    color:var(--text-muted);
+.sidebar-new-chat {
 
-    line-height:1.6;
+    display: flex;
 
-}
+    align-items: center;
 
-.history-empty-icon{
+    justify-content: center;
 
-    font-size:30px;
+    gap: 10px;
 
-    margin-bottom:12px;
+    width: 100%;
 
-}
+    padding: 14px 18px;
 
-/*=====================================================
-    ITEM DE CONVERSA
-=====================================================*/
+    border: none;
 
-.conversation-item{
+    border-radius: 14px;
 
-    padding:14px 16px;
+    background: var(--primary-color);
 
-    border-radius:12px;
+    color: #ffffff;
 
-    cursor:pointer;
+    font-size: .95rem;
 
-    background:transparent;
+    font-weight: 600;
 
-}
+    cursor: pointer;
 
-.conversation-item:hover{
+    transition:
+        background .20s ease,
+        transform .15s ease,
+        box-shadow .20s ease;
 
-    background:rgba(255,255,255,.05);
-
-}
-
-.conversation-item.active{
-
-    background:rgba(25,199,181,.15);
-
-    border:1px solid rgba(25,199,181,.35);
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.16);
 
 }
 
-/*=====================================================
-    ATALHOS
-=====================================================*/
+.sidebar-new-chat:hover {
 
-.sidebar-shortcuts{
+    background: var(--primary-hover);
 
-    display:flex;
-
-    flex-direction:column;
+    transform: translateY(-1px);
 
 }
 
-.shortcut{
+.sidebar-new-chat:active {
 
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
-
-    width:100%;
-
-    padding:12px 14px;
-
-    border-radius:12px;
-
-    margin-bottom:8px;
-
-    background:transparent;
-
-    color:var(--text);
-
-    text-align:left;
+    transform: translateY(0);
 
 }
 
-.shortcut:hover{
+.sidebar-new-chat svg {
 
-    background:rgba(255,255,255,.05);
+    width: 18px;
 
-}
-
-/*=====================================================
-    RODAPÉ
-=====================================================*/
-
-.sidebar-footer{
-
-    margin-top:auto;
-
-    border-top:1px solid var(--border);
-
-    padding-top:22px;
+    height: 18px;
 
 }
 
-.infra-item{
+/* =============================================================================
+   DIVIDER
+   ============================================================================= */
 
-    display:flex;
+.sidebar-divider {
 
-    justify-content:space-between;
+    width: 100%;
 
-    align-items:center;
+    height: 1px;
 
-    margin-bottom:14px;
+    background: rgba(255,255,255,.06);
 
-}
-
-.infra-item span{
-
-    color:var(--text-muted);
+    margin: 0;
 
 }
 
-.online{
+/* =============================================================================
+   SECTION TITLE
+   ============================================================================= */
 
-    color:var(--success);
+.sidebar-section-title {
+
+    padding: 16px 20px 10px;
+
+    color: var(--text-secondary);
+
+    font-size: .72rem;
+
+    font-weight: 700;
+
+    letter-spacing: .08em;
+
+    text-transform: uppercase;
+
+}
+/* =============================================================================
+   CONVERSATIONS
+   ============================================================================= */
+
+.sidebar-content {
+
+    display: flex;
+
+    flex-direction: column;
+
+    flex: 1;
+
+    min-height: 0;
+
+    overflow: hidden;
+
+}
+
+/* =============================================================================
+   CONVERSATION LIST
+   ============================================================================= */
+
+.conversation-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    flex: 1;
+
+    gap: 4px;
+
+    padding: 10px 10px 20px;
+
+    overflow-y: auto;
+
+    overflow-x: hidden;
+
+    scroll-behavior: smooth;
+
+}
+
+/* =============================================================================
+   SCROLLBAR
+   ============================================================================= */
+
+.conversation-list::-webkit-scrollbar {
+
+    width: 8px;
+
+}
+
+.conversation-list::-webkit-scrollbar-track {
+
+    background: transparent;
+
+}
+
+.conversation-list::-webkit-scrollbar-thumb {
+
+    border-radius: 999px;
+
+    background: rgba(255,255,255,.10);
+
+}
+
+.conversation-list::-webkit-scrollbar-thumb:hover {
+
+    background: rgba(255,255,255,.18);
+
+}
+
+.conversation-list {
+
+    scrollbar-width: thin;
+
+    scrollbar-color:
+        rgba(255,255,255,.14)
+        transparent;
+
+}
+
+/* =============================================================================
+   CONVERSATION ITEM
+   ============================================================================= */
+
+.conversation-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    width: 100%;
+
+    padding: 12px 14px;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    transition:
+        background .20s ease,
+        transform .15s ease;
+
+    user-select: none;
+
+}
+
+.conversation-item:hover {
+
+    background: rgba(255,255,255,.05);
+
+}
+
+.conversation-item:active {
+
+    transform: scale(.99);
+
+}
+
+/* =============================================================================
+   ACTIVE CONVERSATION
+   ============================================================================= */
+
+.conversation-item.active {
+
+    background: rgba(255,255,255,.08);
+
+    border: 1px solid rgba(255,255,255,.08);
+
+}
+
+/* =============================================================================
+   CONVERSATION ICON
+   ============================================================================= */
+
+.conversation-icon {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    width: 34px;
+
+    height: 34px;
+
+    border-radius: 10px;
+
+    background: rgba(255,255,255,.05);
+
+    color: var(--text-secondary);
+
+}
+
+.conversation-item.active .conversation-icon {
+
+    background: var(--primary-color);
+
+    color: #ffffff;
+
+}
+
+/* =============================================================================
+   CONVERSATION INFO
+   ============================================================================= */
+
+.conversation-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+    flex: 1;
+
+    min-width: 0;
+
+    gap: 4px;
+
+}
+
+.conversation-title {
+
+    overflow: hidden;
+
+    color: var(--text-primary);
+
+    font-size: .92rem;
+
+    font-weight: 500;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+
+}
+
+.conversation-preview {
+
+    overflow: hidden;
+
+    color: var(--text-secondary);
+
+    font-size: .78rem;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+
+    opacity: .75;
+
+}
+
+/* =============================================================================
+   BADGE
+   ============================================================================= */
+
+.conversation-badge {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    min-width: 22px;
+
+    height: 22px;
+
+    padding: 0 6px;
+
+    border-radius: 999px;
+
+    background: rgba(255,255,255,.08);
+
+    color: var(--text-secondary);
+
+    font-size: .70rem;
+
+    font-weight: 600;
+
+}
+
+.conversation-item.active .conversation-badge {
+
+    background: rgba(255,255,255,.14);
+
+    color: var(--text-primary);
+
+}
+
+/* =============================================================================
+   ITEM ACTIONS
+   ============================================================================= */
+
+.conversation-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 4px;
+
+    margin-left: auto;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: opacity .20s ease;
+
+}
+
+.conversation-item:hover .conversation-actions,
+.conversation-item.active .conversation-actions {
+
+    opacity: 1;
+
+    pointer-events: auto;
+
+}
+
+.conversation-action {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 30px;
+
+    height: 30px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: transparent;
+
+    color: var(--text-secondary);
+
+    cursor: pointer;
+
+    transition:
+        background .20s ease,
+        color .20s ease,
+        transform .15s ease;
+
+}
+
+.conversation-action:hover {
+
+    background: rgba(255,255,255,.08);
+
+    color: var(--text-primary);
+
+}
+
+.conversation-action:active {
+
+    transform: scale(.96);
+
+}
+
+.conversation-action.danger:hover {
+
+    background: rgba(220,38,38,.18);
+
+    color: #f87171;
+
+}
+
+/* =============================================================================
+   DROPDOWN MENU
+   ============================================================================= */
+
+.conversation-menu {
+
+    position: absolute;
+
+    top: calc(100% + 6px);
+
+    right: 0;
+
+    display: none;
+
+    min-width: 180px;
+
+    padding: 8px;
+
+    border-radius: 12px;
+
+    background: var(--surface-color);
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+        0 16px 40px rgba(0,0,0,.30);
+
+    z-index: 100;
+
+}
+
+.conversation-menu.open {
+
+    display: block;
+
+}
+
+.conversation-menu-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    width: 100%;
+
+    padding: 10px 12px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: transparent;
+
+    color: var(--text-primary);
+
+    font-size: .90rem;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        background .18s ease,
+        color .18s ease;
+
+}
+
+.conversation-menu-item:hover {
+
+    background: rgba(255,255,255,.06);
+
+}
+
+.conversation-menu-item.danger {
+
+    color: #f87171;
+
+}
+
+.conversation-menu-item.danger:hover {
+
+    background: rgba(220,38,38,.14);
+
+}
+
+/* =============================================================================
+   SIDEBAR FOOTER
+   ============================================================================= */
+
+.sidebar-footer {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 14px;
+
+    padding: 18px 20px;
+
+    border-top: 1px solid rgba(255,255,255,.06);
+
+}
+
+/* =============================================================================
+   USER CARD
+   ============================================================================= */
+
+.sidebar-user {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+.sidebar-user-avatar {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    width: 42px;
+
+    height: 42px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        var(--primary-color),
+        var(--primary-hover)
+    );
+
+    color: #ffffff;
+
+    font-size: .95rem;
+
+    font-weight: 700;
+
+}
+
+.sidebar-user-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+    min-width: 0;
+
+    gap: 2px;
+
+}
+
+.sidebar-user-name {
+
+    overflow: hidden;
+
+    color: var(--text-primary);
+
+    font-size: .90rem;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+
+}
+
+.sidebar-user-role {
+
+    overflow: hidden;
+
+    color: var(--text-secondary);
+
+    font-size: .76rem;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+
+}
+
+/* =============================================================================
+   FOOTER ACTIONS
+   ============================================================================= */
+
+.sidebar-footer-actions {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+
+}
+
+.sidebar-footer-button {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    width: 100%;
+
+    padding: 10px 12px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: transparent;
+
+    color: var(--text-secondary);
+
+    cursor: pointer;
+
+    transition:
+        background .20s ease,
+        color .20s ease;
+
+}
+
+.sidebar-footer-button:hover {
+
+    background: rgba(255,255,255,.05);
+
+    color: var(--text-primary);
+
+}
+
+/* =============================================================================
+   VERSION
+   ============================================================================= */
+
+.sidebar-version {
+
+    text-align: center;
+
+    color: var(--text-secondary);
+
+    font-size: .72rem;
+
+    opacity: .65;
+
+}
+
+/* =============================================================================
+   COLLAPSED SIDEBAR
+   ============================================================================= */
+
+.sidebar.collapsed {
+
+    width: 82px;
+
+}
+
+.sidebar.collapsed .sidebar-logo-text,
+.sidebar.collapsed .sidebar-section-title,
+.sidebar.collapsed .conversation-info,
+.sidebar.collapsed .conversation-badge,
+.sidebar.collapsed .sidebar-user-info,
+.sidebar.collapsed .sidebar-version {
+
+    display: none;
+
+}
+
+.sidebar.collapsed .sidebar-header {
+
+    align-items: center;
+
+}
+
+.sidebar.collapsed .sidebar-new-chat {
+
+    justify-content: center;
+
+    padding: 14px;
+
+}
+
+.sidebar.collapsed .sidebar-new-chat span {
+
+    display: none;
+
+}
+
+.sidebar.collapsed .conversation-item {
+
+    justify-content: center;
+
+    padding: 12px;
+
+}
+
+.sidebar.collapsed .conversation-actions {
+
+    display: none;
+
+}
+
+.sidebar.collapsed .sidebar-footer {
+
+    align-items: center;
+
+}
+
+.sidebar.collapsed .sidebar-footer-button {
+
+    justify-content: center;
+
+}
+
+.sidebar.collapsed .sidebar-footer-button span {
+
+    display: none;
+
+}
+
+/* =============================================================================
+   MOBILE OVERLAY
+   ============================================================================= */
+
+.sidebar-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0,0,0,.45);
+
+    backdrop-filter: blur(2px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity .25s ease,
+        visibility .25s ease;
+
+    z-index: 900;
+
+}
+
+.sidebar-overlay.active {
+
+    opacity: 1;
+
+    visibility: visible;
+
+}
+
+/* =============================================================================
+   TABLET
+   ============================================================================= */
+
+@media (max-width: 1024px) {
+
+    .sidebar {
+
+        width: 280px;
+
+    }
+
+}
+
+/* =============================================================================
+   MOBILE
+   ============================================================================= */
+
+@media (max-width: 768px) {
+
+    .sidebar {
+
+        position: fixed;
+
+        top: 0;
+
+        left: 0;
+
+        bottom: 0;
+
+        width: 290px;
+
+        max-width: 85vw;
+
+        transform: translateX(-100%);
+
+        z-index: 1000;
+
+        box-shadow:
+            8px 0 32px rgba(0,0,0,.30);
+
+    }
+
+    .sidebar.open {
+
+        transform: translateX(0);
+
+    }
+
+    .sidebar.collapsed {
+
+        width: 290px;
+
+    }
+
+    .sidebar.collapsed .sidebar-logo-text,
+    .sidebar.collapsed .sidebar-section-title,
+    .sidebar.collapsed .conversation-info,
+    .sidebar.collapsed .conversation-badge,
+    .sidebar.collapsed .sidebar-user-info,
+    .sidebar.collapsed .sidebar-version,
+    .sidebar.collapsed .sidebar-new-chat span,
+    .sidebar.collapsed .sidebar-footer-button span {
+
+        display: initial;
+
+    }
+
+    .sidebar.collapsed .conversation-item {
+
+        justify-content: flex-start;
+
+        padding: 12px 14px;
+
+    }
+
+    .sidebar.collapsed .sidebar-footer {
+
+        align-items: stretch;
+
+    }
+
+}
+
+/* =============================================================================
+   SMALL MOBILE
+   ============================================================================= */
+
+@media (max-width: 480px) {
+
+    .sidebar {
+
+        width: 100%;
+
+        max-width: 100%;
+
+    }
+
+    .sidebar-header {
+
+        padding: 20px 16px;
+
+    }
+
+    .sidebar-footer {
+
+        padding: 16px;
+
+    }
+
+    .conversation-list {
+
+        padding: 8px;
+
+    }
+
+    .conversation-item {
+
+        padding: 11px 12px;
+
+    }
+
+}
+
+/* =============================================================================
+   ACCESSIBILITY
+   ============================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .sidebar,
+    .conversation-item,
+    .conversation-action,
+    .sidebar-footer-button,
+    .sidebar-new-chat,
+    .sidebar-overlay {
+
+        transition: none;
+
+    }
 
 }

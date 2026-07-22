@@ -1,0 +1,1005 @@
+/* =============================================================================
+   TOPBAR
+   ============================================================================= */
+
+.topbar {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 24px;
+
+    width: 100%;
+
+    min-height: 72px;
+
+    padding: 0 32px;
+
+    background: rgba(15,23,42,.82);
+
+    backdrop-filter: blur(14px);
+
+    -webkit-backdrop-filter: blur(14px);
+
+    border-bottom: 1px solid rgba(255,255,255,.06);
+
+}
+
+/* =============================================================================
+   LEFT
+   ============================================================================= */
+
+.topbar-left {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    min-width: 0;
+
+    flex: 1;
+
+}
+
+/* =============================================================================
+   MENU BUTTON
+   ============================================================================= */
+
+.topbar-menu {
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 42px;
+
+    height: 42px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: transparent;
+
+    color: var(--text-primary);
+
+    cursor: pointer;
+
+    transition:
+        background .20s ease,
+        color .20s ease,
+        transform .15s ease;
+
+}
+
+.topbar-menu:hover {
+
+    background: rgba(255,255,255,.06);
+
+}
+
+.topbar-menu:active {
+
+    transform: scale(.96);
+
+}
+
+.topbar-menu svg {
+
+    width: 20px;
+
+    height: 20px;
+
+}
+
+/* =============================================================================
+   TITLE
+   ============================================================================= */
+
+.topbar-title-group {
+
+    display: flex;
+
+    flex-direction: column;
+
+    min-width: 0;
+
+    gap: 3px;
+
+}
+
+.topbar-title {
+
+    overflow: hidden;
+
+    color: var(--text-primary);
+
+    font-size: 1.08rem;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+
+}
+
+.topbar-subtitle {
+
+    overflow: hidden;
+
+    color: var(--text-secondary);
+
+    font-size: .82rem;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+
+}
+
+/* =============================================================================
+   STATUS
+   ============================================================================= */
+
+.topbar-status {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-top: 2px;
+
+    color: var(--text-secondary);
+
+    font-size: .76rem;
+
+    font-weight: 500;
+
+}
+
+.topbar-status::before {
+
+    content: "";
+
+    width: 8px;
+
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #22c55e;
+
+    box-shadow:
+        0 0 8px rgba(34,197,94,.45);
+
+}
+
+/* =============================================================================
+   CENTER
+   ============================================================================= */
+
+.topbar-center {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex: 1;
+
+    min-width: 0;
+
+}
+
+/* =============================================================================
+   RIGHT
+   ============================================================================= */
+
+.topbar-right {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 8px;
+
+    flex-shrink: 0;
+
+}
+
+/* =============================================================================
+   ACTION GROUP
+   ============================================================================= */
+
+.topbar-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+}
+
+/* =============================================================================
+   ACTION BUTTON
+   ============================================================================= */
+
+.topbar-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    min-width: 42px;
+
+    height: 42px;
+
+    padding: 0 14px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: transparent;
+
+    color: var(--text-secondary);
+
+    cursor: pointer;
+
+    transition:
+        background .20s ease,
+        color .20s ease,
+        transform .15s ease,
+        box-shadow .20s ease;
+
+}
+
+.topbar-button:hover {
+
+    background: rgba(255,255,255,.06);
+
+    color: var(--text-primary);
+
+}
+
+.topbar-button:focus-visible {
+
+    outline: none;
+
+    box-shadow:
+        0 0 0 2px rgba(255,255,255,.08),
+        0 0 0 4px rgba(59,130,246,.30);
+
+}
+
+.topbar-button:active {
+
+    transform: scale(.96);
+
+}
+
+.topbar-button:disabled {
+
+    opacity: .45;
+
+    cursor: not-allowed;
+
+    pointer-events: none;
+
+}
+
+/* =============================================================================
+   PRIMARY BUTTON
+   ============================================================================= */
+
+.topbar-button.primary {
+
+    background: var(--primary-color);
+
+    color: #ffffff;
+
+}
+
+.topbar-button.primary:hover {
+
+    background: var(--primary-hover);
+
+    color: #ffffff;
+
+}
+
+/* =============================================================================
+   ICONS
+   ============================================================================= */
+
+.topbar-button svg {
+
+    width: 18px;
+
+    height: 18px;
+
+    flex-shrink: 0;
+
+}
+
+.topbar-button span {
+
+    white-space: nowrap;
+
+    font-size: .90rem;
+
+    font-weight: 500;
+
+}
+
+/* =============================================================================
+   DIVIDER
+   ============================================================================= */
+
+.topbar-divider {
+
+    width: 1px;
+
+    height: 24px;
+
+    margin: 0 6px;
+
+    background: rgba(255,255,255,.08);
+
+}
+
+/* =============================================================================
+   BUTTON STATES
+   ============================================================================= */
+
+.topbar-button.active {
+
+    background: rgba(255,255,255,.08);
+
+    color: var(--text-primary);
+
+}
+
+.topbar-button.loading {
+
+    position: relative;
+
+    color: transparent;
+
+    pointer-events: none;
+
+}
+
+.topbar-button.loading::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 16px;
+
+    height: 16px;
+
+    border: 2px solid rgba(255,255,255,.25);
+
+    border-top-color: #ffffff;
+
+    border-radius: 50%;
+
+    animation: topbarSpin .8s linear infinite;
+
+}
+
+/* =============================================================================
+   MODEL SELECTOR
+   ============================================================================= */
+
+.topbar-model {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    height: 42px;
+
+    padding: 0 14px;
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    border-radius: 12px;
+
+    background: rgba(255,255,255,.03);
+
+    cursor: pointer;
+
+    transition:
+        border-color .20s ease,
+        background .20s ease,
+        box-shadow .20s ease;
+
+}
+
+.topbar-model:hover {
+
+    background: rgba(255,255,255,.05);
+
+    border-color: rgba(255,255,255,.14);
+
+}
+
+.topbar-model:focus-within {
+
+    border-color: var(--primary-color);
+
+    box-shadow:
+        0 0 0 3px rgba(59,130,246,.18);
+
+}
+
+.topbar-model-icon {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: var(--primary-color);
+
+}
+
+.topbar-model-label {
+
+    color: var(--text-secondary);
+
+    font-size: .78rem;
+
+    white-space: nowrap;
+
+}
+
+.topbar-model-name {
+
+    color: var(--text-primary);
+
+    font-size: .90rem;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+}
+
+.topbar-model select {
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color: var(--text-primary);
+
+    font-size: .90rem;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    appearance: none;
+
+}
+
+/* =============================================================================
+   USER PROFILE
+   ============================================================================= */
+
+.topbar-profile {
+
+    position: relative;
+
+}
+
+.topbar-profile-button {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    height: 42px;
+
+    padding: 0 10px 0 8px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: transparent;
+
+    color: var(--text-primary);
+
+    cursor: pointer;
+
+    transition:
+        background .20s ease,
+        transform .15s ease;
+
+}
+
+.topbar-profile-button:hover {
+
+    background: rgba(255,255,255,.06);
+
+}
+
+.topbar-profile-button:active {
+
+    transform: scale(.98);
+
+}
+
+/* =============================================================================
+   AVATAR
+   ============================================================================= */
+
+.topbar-avatar {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 34px;
+
+    height: 34px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        var(--primary-color),
+        var(--primary-hover)
+    );
+
+    color: #ffffff;
+
+    font-size: .84rem;
+
+    font-weight: 700;
+
+    flex-shrink: 0;
+
+}
+
+.topbar-user {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 2px;
+
+    min-width: 0;
+
+}
+
+.topbar-user-name {
+
+    max-width: 140px;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+    font-size: .88rem;
+
+    font-weight: 600;
+
+    color: var(--text-primary);
+
+}
+
+.topbar-user-role {
+
+    font-size: .74rem;
+
+    color: var(--text-secondary);
+
+}
+
+/* =============================================================================
+   STATUS BADGE
+   ============================================================================= */
+
+.topbar-badge {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 22px;
+
+    height: 22px;
+
+    padding: 0 8px;
+
+    border-radius: 999px;
+
+    background: rgba(34,197,94,.15);
+
+    color: #4ade80;
+
+    font-size: .70rem;
+
+    font-weight: 700;
+
+}
+
+.topbar-badge.warning {
+
+    background: rgba(245,158,11,.15);
+
+    color: #fbbf24;
+
+}
+
+.topbar-badge.error {
+
+    background: rgba(239,68,68,.15);
+
+    color: #f87171;
+
+}
+
+/* =============================================================================
+   PROFILE DROPDOWN
+   ============================================================================= */
+
+.topbar-dropdown {
+
+    position: absolute;
+
+    top: calc(100% + 10px);
+
+    right: 0;
+
+    display: none;
+
+    min-width: 240px;
+
+    padding: 10px;
+
+    border-radius: 14px;
+
+    background: var(--surface-color);
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+        0 18px 40px rgba(0,0,0,.30);
+
+    z-index: 500;
+
+}
+
+.topbar-dropdown.open {
+
+    display: block;
+
+}
+
+.topbar-dropdown-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    width: 100%;
+
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: transparent;
+
+    color: var(--text-primary);
+
+    font-size: .90rem;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        background .20s ease,
+        color .20s ease;
+
+}
+
+.topbar-dropdown-item:hover {
+
+    background: rgba(255,255,255,.06);
+
+}
+
+.topbar-dropdown-item.danger {
+
+    color: #f87171;
+
+}
+
+.topbar-dropdown-item.danger:hover {
+
+    background: rgba(220,38,38,.15);
+
+}
+
+/* =============================================================================
+   OPEN STATE
+   ============================================================================= */
+
+.topbar-profile.open .topbar-profile-button {
+
+    background: rgba(255,255,255,.08);
+
+}
+
+/* =============================================================================
+   TABLET
+   ============================================================================= */
+
+@media (max-width: 1024px) {
+
+    .topbar {
+
+        padding: 0 24px;
+
+        gap: 18px;
+
+    }
+
+    .topbar-title {
+
+        font-size: 1rem;
+
+    }
+
+    .topbar-subtitle {
+
+        font-size: .78rem;
+
+    }
+
+    .topbar-user {
+
+        display: none;
+
+    }
+
+}
+
+/* =============================================================================
+   MOBILE
+   ============================================================================= */
+
+@media (max-width: 768px) {
+
+    .topbar {
+
+        min-height: 64px;
+
+        padding: 0 16px;
+
+        gap: 12px;
+
+    }
+
+    .topbar-menu {
+
+        display: inline-flex;
+
+    }
+
+    .topbar-center {
+
+        display: none;
+
+    }
+
+    .topbar-right {
+
+        gap: 6px;
+
+    }
+
+    .topbar-model {
+
+        display: none;
+
+    }
+
+    .topbar-button span {
+
+        display: none;
+
+    }
+
+    .topbar-button {
+
+        width: 40px;
+
+        min-width: 40px;
+
+        height: 40px;
+
+        padding: 0;
+
+    }
+
+    .topbar-divider {
+
+        display: none;
+
+    }
+
+    .topbar-title {
+
+        font-size: .98rem;
+
+    }
+
+    .topbar-subtitle {
+
+        display: none;
+
+    }
+
+    .topbar-status {
+
+        display: none;
+
+    }
+
+}
+
+/* =============================================================================
+   SMALL MOBILE
+   ============================================================================= */
+
+@media (max-width: 480px) {
+
+    .topbar {
+
+        min-height: 60px;
+
+        padding: 0 12px;
+
+    }
+
+    .topbar-left {
+
+        gap: 12px;
+
+    }
+
+    .topbar-title {
+
+        font-size: .92rem;
+
+    }
+
+    .topbar-button {
+
+        width: 38px;
+
+        min-width: 38px;
+
+        height: 38px;
+
+        border-radius: 10px;
+
+    }
+
+    .topbar-avatar {
+
+        width: 32px;
+
+        height: 32px;
+
+        font-size: .78rem;
+
+    }
+
+    .topbar-dropdown {
+
+        right: -8px;
+
+        min-width: 220px;
+
+    }
+
+}
+
+/* =============================================================================
+   ANIMATIONS
+   ============================================================================= */
+
+@keyframes topbarSpin {
+
+    from {
+
+        transform: rotate(0deg);
+
+    }
+
+    to {
+
+        transform: rotate(360deg);
+
+    }
+
+}
+
+/* =============================================================================
+   ACCESSIBILITY
+   ============================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .topbar,
+    .topbar-button,
+    .topbar-menu,
+    .topbar-model,
+    .topbar-profile-button,
+    .topbar-dropdown {
+
+        transition: none;
+
+    }
+
+    .topbar-button.loading::after {
+
+        animation: none;
+
+    }
+
+}
