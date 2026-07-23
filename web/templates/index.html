@@ -1,648 +1,419 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
 
-<head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Versa IA</title>
 
-    <link rel="icon"
-          href="/static/img/logo.png">
+    <link rel="icon" href="/static/img/logo.png" />
 
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
 
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-    <link rel="stylesheet"
-          href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/messages.css">
+  </head>
 
-</head>
-
-<body>
-
-<div class="layout">
-
-    <!-- ===========================================================
+  <body>
+    <div class="layout">
+      <!-- ===========================================================
          SIDEBAR
     ============================================================ -->
 
-    <aside class="sidebar">
-
+      <aside class="sidebar">
         <!-- HEADER -->
 
         <div class="sidebar-header">
-
-            <div class="sidebar-logo">
-
-                <div class="sidebar-logo-icon">
-
-                    <img src="{{ url_for('static', filename='img/logo.png') }}"
-                         alt="Versa IA">
-
-                </div>
-
-                <div class="sidebar-logo-text">
-
-                    <div class="sidebar-logo-title">
-                        Versa IA
-                    </div>
-
-                    <div class="sidebar-logo-subtitle">
-                        Assistente Inteligente
-                    </div>
-
-                </div>
-
+          <div class="sidebar-logo">
+            <div class="sidebar-logo-icon">
+                <img
+                    src="/static/img/teste.png"
+                    alt="Versa IA"
+                />
             </div>
 
-            <button id="newChatButton"
-                    class="sidebar-new-chat">
+            <div class="sidebar-logo-text">
+              <div class="sidebar-logo-title">Versa IA</div>
 
-                <svg xmlns="http://www.w3.org/2000/svg"
-                     fill="none"
-                     viewBox="0 0 24 24"
-                     stroke="currentColor">
+              <div class="sidebar-logo-subtitle">Assistente Inteligente</div>
+            </div>
+          </div>
 
-                    <path stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M12 4v16m8-8H4"/>
+          <button id="newChatButton" class="sidebar-new-chat">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 4v16m8-8H4"
+              />
+            </svg>
 
-                </svg>
-
-                <span>Nova conversa</span>
-
-            </button>
-
+            <span>Nova conversa</span>
+          </button>
         </div>
 
         <!-- CONTENT -->
 
         <div class="sidebar-content">
+          <div class="sidebar-section-title">Conversas</div>
 
-            <div class="sidebar-section-title">
+          <div id="conversationList" class="conversation-list">
+            <!-- Estado vazio -->
 
-                Conversas
+            <div class="conversation-empty">
+              <div class="conversation-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M8 10h8M8 14h5m-7 6h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  />
+                </svg>
+              </div>
 
+              <div>Nenhuma conversa iniciada.</div>
             </div>
-
-            <div id="conversationList"
-                 class="conversation-list">
-
-                             <!-- Estado vazio -->
-
-                <div class="conversation-empty">
-
-                    <div class="conversation-icon">
-
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                             fill="none"
-                             viewBox="0 0 24 24"
-                             stroke="currentColor">
-
-                            <path stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  stroke-width="2"
-                                  d="M8 10h8M8 14h5m-7 6h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-
-                        </svg>
-
-                    </div>
-
-                    <div>
-
-                        Nenhuma conversa iniciada.
-
-                    </div>
-
-                </div>
-
-            </div>
-
+          </div>
         </div>
 
         <!-- FOOTER -->
 
         <div class="sidebar-footer">
+          <div class="sidebar-user">
+            <div class="sidebar-user-avatar">U</div>
 
-            <div class="sidebar-user">
+            <div class="sidebar-user-info">
+              <div class="sidebar-user-name">Usuário</div>
 
-                <div class="sidebar-user-avatar">
-
-                    U
-
-                </div>
-
-                <div class="sidebar-user-info">
-
-                    <div class="sidebar-user-name">
-
-                        Usuário
-
-                    </div>
-
-                    <div class="sidebar-user-role">
-
-                        Versa IA
-
-                    </div>
-
-                </div>
-
+              <div class="sidebar-user-role">Versa IA</div>
             </div>
+          </div>
 
-            <div class="sidebar-footer-actions">
+          <div class="sidebar-footer-actions">
+            <button class="sidebar-footer-button">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12A9 9 0 113 12a9 9 0 0118 0z"
+                />
+              </svg>
 
-                <button class="sidebar-footer-button">
+              <span>Ajuda</span>
+            </button>
 
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                         fill="none"
-                         viewBox="0 0 24 24"
-                         stroke="currentColor">
+            <button class="sidebar-footer-button">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 8c-2.21 0-4 1.79-4 4m8 0a4 4 0 00-4-4m0 8h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
 
-                        <path stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              d="M13 16h-1v-4h-1m1-4h.01M21 12A9 9 0 113 12a9 9 0 0118 0z"/>
+              <span>Configurações</span>
+            </button>
+          </div>
 
-                    </svg>
-
-                    <span>Ajuda</span>
-
-                </button>
-
-                <button class="sidebar-footer-button">
-
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                         fill="none"
-                         viewBox="0 0 24 24"
-                         stroke="currentColor">
-
-                        <path stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              d="M12 8c-2.21 0-4 1.79-4 4m8 0a4 4 0 00-4-4m0 8h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-
-                    </svg>
-
-                    <span>Configurações</span>
-
-                </button>
-
-            </div>
-
-            <div class="sidebar-version">
-
-                Versa IA • v1.0
-
-            </div>
-
+          <div class="sidebar-version">Versa IA • v1.0</div>
         </div>
+      </aside>
 
-    </aside>
-
-    <!-- ===========================================================
+      <!-- ===========================================================
          OVERLAY MOBILE
     ============================================================ -->
 
-    <div class="sidebar-overlay"></div>
+      <div class="sidebar-overlay"></div>
 
-    <!-- ===========================================================
+      <!-- ===========================================================
          WORKSPACE
     ============================================================ -->
 
-    <main class="workspace">
-
+      <main class="workspace">
         <!-- =======================================================
              TOPBAR
         ======================================================== -->
 
-<header class="topbar">
+        <header class="topbar">
+          <!-- ESQUERDA -->
+          <div class="topbar-left">
+            <div class="topbar-brand">
+              <h1>Versa IA</h1>
 
-    <!-- ESQUERDA -->
-    <div class="topbar-left">
+              <span>Assistente Inteligente Corporativo</span>
 
-        <div class="topbar-brand">
-
-            <h1>Versa IA</h1>
-
-            <span>Assistente Inteligente Corporativo</span>
-
-            <div class="topbar-status">
-
+              <div class="topbar-status">
                 <span class="status-dot"></span>
 
                 IA Online
-
+              </div>
             </div>
+          </div>
 
-        </div>
-
-    </div>
-
-    <!-- CENTRO -->
-    <div class="topbar-center">
-
-        <div class="model-selector" id="modelSelector">
-
-            <button
+          <!-- CENTRO -->
+          <div class="topbar-center">
+            <div class="model-selector" id="modelSelector">
+              <button
                 id="modelSelectorTrigger"
                 class="model-selector-trigger"
-                type="button">
-
+                type="button"
+              >
                 <div class="model-selector-left">
+                  <div class="model-icon">🧠</div>
 
-                    <div class="model-icon">
+                  <div class="model-info">
+                    <span id="currentModelName" class="model-name">
+                      Qwen 3 8B
+                    </span>
 
-                        🧠
-
-                    </div>
-
-                    <div class="model-info">
-
-                        <span
-                            id="currentModelName"
-                            class="model-name">
-
-                            Qwen 3 8B
-
-                        </span>
-
-                        <span
-                            id="currentModelProvider"
-                            class="model-provider">
-
-                            Ollama Local
-
-                        </span>
-
-                    </div>
-
+                    <span id="currentModelProvider" class="model-provider">
+                      Ollama Local
+                    </span>
+                  </div>
                 </div>
 
                 <svg
-                    class="model-arrow"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor">
-
-                    <path
-                        fill-rule="evenodd"
-                        d="M5.23 7.21a.75.75 0 011.06.02L10 11.17l3.71-3.94a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                        clip-rule="evenodd"/>
-
+                  class="model-arrow"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.23 7.21a.75.75 0 011.06.02L10 11.17l3.71-3.94a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                    clip-rule="evenodd"
+                  />
                 </svg>
+              </button>
 
+              <div id="modelDropdown" class="model-dropdown hidden"></div>
+            </div>
+          </div>
+
+          <!-- DIREITA -->
+          <div class="topbar-right">
+            <button class="topbar-action" id="btnNewChat">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 4v16m8-8H4"
+                />
+              </svg>
+
+              <span>Nova conversa</span>
             </button>
 
-            <div
-                id="modelDropdown"
-                class="model-dropdown hidden">
+            <button class="user-button">
+              <div class="user-avatar">R</div>
 
-            </div>
+              <div class="user-info">
+                <span class="user-name"> Raphael </span>
 
-        </div>
+                <span class="user-role"> Administrador </span>
+              </div>
+            </button>
+          </div>
+        </header>
 
-    </div>
-
-    <!-- DIREITA -->
-    <div class="topbar-right">
-
-        <button
-            class="topbar-action"
-            id="btnNewChat">
-
-            <svg xmlns="http://www.w3.org/2000/svg"
-                 fill="none"
-                 viewBox="0 0 24 24"
-                 stroke="currentColor">
-
-                <path stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M12 4v16m8-8H4"/>
-
-            </svg>
-
-            <span>Nova conversa</span>
-
-        </button>
-
-        <button
-            class="user-button">
-
-            <div class="user-avatar">
-
-                R
-
-            </div>
-
-            <div class="user-info">
-
-                <span class="user-name">
-
-                    Raphael
-
-                </span>
-
-                <span class="user-role">
-
-                    Administrador
-
-                </span>
-
-            </div>
-
-        </button>
-
-    </div>
-
-</header>    
-
-    <!-- =======================================================
+        <!-- =======================================================
              HERO
         ======================================================== -->
 
-        <section id="hero"
-                 class="hero active">
+        <section id="hero" class="hero active">
+          <div class="hero-container">
+            <!-- Título -->
 
-            <div class="hero-container">
+            <h1 class="hero-title">Bem-vindo ao <strong>Versa IA</strong></h1>
 
-                <!-- Título -->
+            <!-- Subtítulo -->
 
-                <h1 class="hero-title">
+            <p class="hero-subtitle">
+              Seu assistente inteligente para consultas, documentos, automações
+              e apoio às atividades da empresa.
+            </p>
 
-                    Bem-vindo ao <strong>Versa IA</strong>
+            <!-- Sugestões -->
 
-                </h1>
+            <div class="hero-actions">
+              <div
+                class="hero-card prompt-card"
+                data-prompt="Resuma este documento"
+              >
+                <div class="hero-card-icon">📄</div>
 
-                <!-- Subtítulo -->
+                <div class="hero-card-content">
+                  <div class="hero-card-title">Resumir documento</div>
 
-                <p class="hero-subtitle">
-
-                    Seu assistente inteligente para consultas, documentos,
-                    automações e apoio às atividades da empresa.
-
-                </p>
-
-                <!-- Sugestões -->
-
-                <div class="hero-actions">
-
-                    <div class="hero-card prompt-card"
-                         data-prompt="Resuma este documento">
-
-                        <div class="hero-card-icon">
-
-                            📄
-
-                        </div>
-
-                        <div class="hero-card-content">
-
-                            <div class="hero-card-title">
-
-                                Resumir documento
-
-                            </div>
-
-                            <div class="hero-card-description">
-
-                                Gere um resumo objetivo de um PDF ou texto.
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="hero-card prompt-card"
-                         data-prompt="Explique este código">
-
-                        <div class="hero-card-icon">
-
-                            💻
-
-                        </div>
-
-                        <div class="hero-card-content">
-
-                            <div class="hero-card-title">
-
-                                Explicar código
-
-                            </div>
-
-                            <div class="hero-card-description">
-
-                                Analise código-fonte e explique seu funcionamento.
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="hero-card prompt-card"
-                         data-prompt="Crie uma consulta SQL">
-
-                        <div class="hero-card-icon">
-
-                            🗄️
-
-                        </div>
-
-                        <div class="hero-card-content">
-
-                            <div class="hero-card-title">
-
-                                Criar SQL
-
-                            </div>
-
-                            <div class="hero-card-description">
-
-                                Gere consultas SQL otimizadas para Oracle.
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="hero-card prompt-card"
-                         data-prompt="Analise este arquivo">
-
-                        <div class="hero-card-icon">
-
-                            📊
-
-                        </div>
-
-                        <div class="hero-card-content">
-
-                            <div class="hero-card-title">
-
-                                Analisar arquivos
-
-                            </div>
-
-                            <div class="hero-card-description">
-
-                                PDFs, Excel, Word, imagens e outros documentos.
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
+                  <div class="hero-card-description">
+                    Gere um resumo objetivo de um PDF ou texto.
+                  </div>
                 </div>
+              </div>
 
-                <!-- Prompts rápidos -->
+              <div
+                class="hero-card prompt-card"
+                data-prompt="Explique este código"
+              >
+                <div class="hero-card-icon">💻</div>
 
-                <div class="hero-prompts">
+                <div class="hero-card-content">
+                  <div class="hero-card-title">Explicar código</div>
 
-                    <div class="hero-prompts-title">
-
-                        Sugestões rápidas
-
-                    </div>
-
-                    <div class="hero-prompt-list">
-
-                        <button class="hero-chip"
-                                data-prompt="Explique passo a passo">
-
-                            Explique passo a passo
-
-                        </button>
-
-                        <button class="hero-chip"
-                                data-prompt="Melhore este texto">
-
-                            Melhorar texto
-
-                        </button>
-
-                        <button class="hero-chip"
-                                data-prompt="Escreva um e-mail">
-
-                            Escrever e-mail
-
-                        </button>
-
-                        <button class="hero-chip"
-                                data-prompt="Gerar código PL/SQL">
-
-                            Gerar PL/SQL
-
-                        </button>
-
-                        <button class="hero-chip"
-                                data-prompt="Criar documentação">
-
-                            Criar documentação
-
-                        </button>
-
-                        <button class="hero-chip"
-                                data-prompt="Explicar consulta SQL">
-
-                            Explicar SQL
-
-                        </button>
-
-                    </div>
-
+                  <div class="hero-card-description">
+                    Analise código-fonte e explique seu funcionamento.
+                  </div>
                 </div>
+              </div>
 
-                <!-- Rodapé -->
+              <div
+                class="hero-card prompt-card"
+                data-prompt="Crie uma consulta SQL"
+              >
+                <div class="hero-card-icon">🗄️</div>
 
-                <div class="hero-footer">
+                <div class="hero-card-content">
+                  <div class="hero-card-title">Criar SQL</div>
 
-                    IA desenvolvida para auxiliar nas atividades da empresa.
-
+                  <div class="hero-card-description">
+                    Gere consultas SQL otimizadas para Oracle.
+                  </div>
                 </div>
+              </div>
 
+              <div
+                class="hero-card prompt-card"
+                data-prompt="Analise este arquivo"
+              >
+                <div class="hero-card-icon">📊</div>
+
+                <div class="hero-card-content">
+                  <div class="hero-card-title">Analisar arquivos</div>
+
+                  <div class="hero-card-description">
+                    PDFs, Excel, Word, imagens e outros documentos.
+                  </div>
+                </div>
+              </div>
             </div>
 
+            <!-- Prompts rápidos -->
+
+            <div class="hero-prompts">
+              <div class="hero-prompts-title">Sugestões rápidas</div>
+
+              <div class="hero-prompt-list">
+                <button class="hero-chip" data-prompt="Explique passo a passo">
+                  Explique passo a passo
+                </button>
+
+                <button class="hero-chip" data-prompt="Melhore este texto">
+                  Melhorar texto
+                </button>
+
+                <button class="hero-chip" data-prompt="Escreva um e-mail">
+                  Escrever e-mail
+                </button>
+
+                <button class="hero-chip" data-prompt="Gerar código PL/SQL">
+                  Gerar PL/SQL
+                </button>
+
+                <button class="hero-chip" data-prompt="Criar documentação">
+                  Criar documentação
+                </button>
+
+                <button class="hero-chip" data-prompt="Explicar consulta SQL">
+                  Explicar SQL
+                </button>
+              </div>
+            </div>
+
+            <!-- Rodapé -->
+
+            <div class="hero-footer">
+              IA desenvolvida para auxiliar nas atividades da empresa.
+            </div>
+          </div>
         </section>
 
-    <!-- =======================================================
+        <!-- =======================================================
              CHAT
         ======================================================== -->
 
-        <section id="chat"
-                 class="chat">
-
-            <div class="chat-scroll">
-
-                <div id="chatContainer"
-                     class="chat-container">
-
-                    <!--
+        <section id="chat" class="chat">
+          <div class="chat-scroll">
+            <div id="chatContainer" class="chat-container">
+              <!--
                         As mensagens serão inseridas aqui
                         dinamicamente pelo JavaScript.
                     -->
-
-                </div>
-
             </div>
-
+          </div>
         </section>
 
         <!-- =======================================================
              THINKING
         ======================================================== -->
 
-        <div id="thinking"
-             class="thinking">
+        <div id="thinking" class="thinking">
+          <div class="chat-container">
+            <div class="chat-message assistant">
+              <div class="chat-avatar">IA</div>
 
-            <div class="chat-container">
+              <div class="chat-body">
+                <div class="chat-bubble">
+                  <div class="chat-thinking">
+                    <div class="chat-thinking-dot"></div>
 
-                <div class="chat-message assistant">
+                    <div class="chat-thinking-dot"></div>
 
-                    <div class="chat-avatar">
+                    <div class="chat-thinking-dot"></div>
 
-                        IA
-
-                    </div>
-
-                    <div class="chat-body">
-
-                        <div class="chat-bubble">
-
-                            <div class="chat-thinking">
-
-                                <div class="chat-thinking-dot"></div>
-
-                                <div class="chat-thinking-dot"></div>
-
-                                <div class="chat-thinking-dot"></div>
-
-                                <span>Pensando...</span>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
+                    <span>Pensando...</span>
+                  </div>
                 </div>
-
+              </div>
             </div>
-
+          </div>
         </div>
 
         <!-- =======================================================
@@ -650,201 +421,188 @@
         ======================================================== -->
 
         <footer class="composer">
-
-            <div class="composer-container">
-
-                <form id="chatForm"
-                      class="composer-form">
-
-                    <!-- ==========================================
+          <div class="composer-container">
+            <form id="chatForm" class="composer-form">
+              <!-- ==========================================
                          ANEXOS
-                    =========================================== -->
+                =========================================== -->
 
-                    <div id="attachmentList"
-                         class="composer-attachments">
+              <div id="attachmentList" class="composer-attachments"></div>
 
-                    </div>
-
-                    <!-- ==========================================
+              <!-- ==========================================
                          BOX
-                    =========================================== -->
+                =========================================== -->
 
-                    <div id="composerBox"
-                         class="composer-box">
+              <div id="composerBox" class="composer-box">
+                <!-- Botão anexar -->
 
-                        <!-- Botão anexar -->
+                <button type="button" id="attachButton" class="composer-button">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828L18 9.828a4 4 0 10-5.656-5.656L5.757 10.757a6 6 0 108.486 8.486L20.5 13"
+                    />
+                  </svg>
+                </button>
 
-                        <button type="button"
-                                id="attachButton"
-                                class="composer-button">
+                <!-- Arquivo oculto -->
 
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                 fill="none"
-                                 viewBox="0 0 24 24"
-                                 stroke="currentColor">
+                <input type="file" id="fileInput" hidden multiple />
 
-                                <path stroke-linecap="round"
-                                      stroke-linejoin="round"
-                                      stroke-width="2"
-                                      d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828L18 9.828a4 4 0 10-5.656-5.656L5.757 10.757a6 6 0 108.486 8.486L20.5 13"/>
+                <!-- Campo -->
 
-                            </svg>
+                <textarea
+                  id="promptInput"
+                  class="composer-input"
+                  rows="1"
+                  autocomplete="off"
+                  placeholder="Como posso ajudar hoje?"
+                ></textarea>
 
-                        </button>
+                <!-- Ações -->
 
-                        <!-- Arquivo oculto -->
+                <div class="composer-actions">
+                  <button
+                    id="stopButton"
+                    type="button"
+                    class="composer-button composer-stop hidden"
+                  >
+                    ■
+                  </button>
 
-                        <input type="file"
-                               id="fileInput"
-                               hidden
-                               multiple>
-
-                        <!-- Campo -->
-
-                        <textarea
-                            id="promptInput"
-                            class="composer-input"
-                            rows="1"
-                            autocomplete="off"
-                            placeholder="Como posso ajudar hoje?"></textarea>
-
-                        <!-- Ações -->
-
-                        <div class="composer-actions">
-
-                            <button id="stopButton"
-                                    type="button"
-                                    class="composer-button composer-stop hidden">
-
-                                ■
-
-                            </button>
-
-                            <button id="sendButton"
-                                    type="submit"
-                                    class="composer-button composer-send">
-
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                     fill="none"
-                                     viewBox="0 0 24 24"
-                                     stroke="currentColor">
-
-                                    <path stroke-linecap="round"
-                                          stroke-linejoin="round"
-                                          stroke-width="2"
-                                          d="M5 12l14-7-4 7 4 7-14-7z"/>
-
-                                </svg>
-
-                            </button>
-
-                        </div>
-
-                    </div>
-
-                </form>
-
-            </div>
-
+                  <button
+                    id="sendButton"
+                    type="submit"
+                    class="composer-button composer-send"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M5 12l14-7-4 7 4 7-14-7z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
         </footer>
-
-            </main>
-
-</div>
+      </main>
+    </div>
 
 <!-- ===========================================================
      OVERLAY GLOBAL
 =========================================================== -->
 
-<div class="overlay hidden"
-     id="overlay"></div>
+    <div class="overlay hidden" id="overlay"></div>
 
 <!-- ===========================================================
      MODAL CONTAINER
 =========================================================== -->
 
-<div id="modalContainer"></div>
+    <div id="modalContainer"></div>
 
 <!-- ===========================================================
      TOAST CONTAINER
 =========================================================== -->
 
-<div id="toastContainer"></div>
+    <div id="toastContainer"></div>
 
-<!-- ===========================================================
-     TEMPLATES (UTILIZADOS PELO JAVASCRIPT)
+<!-- ==========================================================
+     TEMPLATES
 =========================================================== -->
 
-<template id="userMessageTemplate">
+    <template id="userMessageTemplate">
 
-    <div class="chat-message user">
+        <article class="message message-user">
 
-        <div class="chat-avatar">
-            U
-        </div>
+            <div class="message-avatar">
 
-        <div class="chat-body">
-
-            <div class="chat-bubble"></div>
-
-            <div class="chat-footer">
-
-                <span class="chat-time"></span>
+                U
 
             </div>
 
-        </div>
+            <div class="message-wrapper">
 
-    </div>
+                <div class="message-bubble"></div>
 
-</template>
+            </div>
 
-<template id="assistantMessageTemplate">
+        </article>
 
-    <div class="chat-message assistant">
+    </template>
 
-        <div class="chat-avatar">
-            IA
-        </div>
 
-        <div class="chat-body">
+    <template id="assistantMessageTemplate">
 
-            <div class="chat-bubble"></div>
+        <article class="message message-assistant">
 
-            <div class="chat-footer">
+            <div class="message-avatar">
 
-                <span class="chat-time"></span>
+                IA
 
-                <div class="chat-actions">
+            </div>
 
-                    <button class="chat-action copy-message"
-                            title="Copiar resposta">
+            <div class="message-wrapper">
 
-                        📋
+                <div class="message-bubble"></div>
 
-                    </button>
+            </div>
+
+        </article>
+
+    </template>
+
+
+    <template id="thinkingTemplate">
+
+        <article class="message message-assistant thinking-message">
+
+            <div class="message-avatar">
+
+                IA
+
+            </div>
+
+            <div class="message-wrapper">
+
+                <div class="message-bubble thinking-bubble">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
 
                 </div>
 
             </div>
 
-        </div>
+        </article>
 
-    </div>
-
-</template>
+    </template>    
 
 <!-- ===========================================================
      JAVASCRIPT
 =========================================================== -->
 
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
 
-<script src="/static/js/model-selector.js"></script>
-<script src="/static/js/app.js"></script>
-
-</body>
-
+    <script src="/static/js/model-selector.js"></script>
+    <script src="/static/js/chat.js"></script>
+  </body>
 </html>

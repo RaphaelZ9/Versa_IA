@@ -1,0 +1,69 @@
+/******************************************************************************
+ * Mensagens
+ ******************************************************************************/
+
+.message {
+  display: flex;
+  gap: 14px;
+  margin: 24px auto;
+  max-width: 900px;
+  width: 100%;
+}
+
+.message-user {
+  flex-direction: row-reverse;
+}
+
+.message-avatar {
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  font-weight: 600;
+  color: #fff;
+}
+
+.message-user .message-avatar {
+  background: #14b8a6;
+}
+
+.message-assistant .message-avatar {
+  background: #3b82f6;
+}
+
+.message-wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
+}
+
+.message-user .message-wrapper {
+  align-items: flex-end;
+}
+
+.message-bubble {
+  padding: 14px 18px;
+
+  border-radius: 18px;
+
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.6;
+}
+
+.message-user .message-bubble {
+  background: #14b8a6;
+  color: white;
+}
+
+.message-assistant .message-bubble {
+  background: #252f3f;
+  color: #e5e7eb;
+}

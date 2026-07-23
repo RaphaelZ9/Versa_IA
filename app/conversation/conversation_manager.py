@@ -18,6 +18,7 @@ from __future__ import annotations
 
 from app.ai_core.context.context_builder import ContextBuilder
 from app.ai_core.context.context_package import ContextPackage
+from app.ai_core.context.context_request import ContextRequest
 from app.conversation.repositories.base_conversation_repository import (
     BaseConversationRepository,
 )
@@ -93,7 +94,9 @@ class ConversationManager:
         por compatibilidade com a API pública do Kernel.
         """
 
-        context = self._context_builder.build()
+        request = ContextRequest()
+
+        context = self._context_builder.build(request)
 
         if system_prompt is not None:
             context.system_prompt = system_prompt

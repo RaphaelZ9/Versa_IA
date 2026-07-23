@@ -1,336 +1,183 @@
-/*
-===============================================================================
-Versa IA
-Chat Controller
+/******************************************************************************
+ * Versa IA - Chat MVP
+ ******************************************************************************/
 
-Versão : 2.0
-Autor   : Versa Energia
+const form = document.getElementById("chatForm");
+const input = document.getElementById("promptInput");
 
-Descrição
--------------------------------------------------------------------------------
-Frontend responsável por:
+const hero = document.getElementById("hero");
+const chat = document.getElementById("chat");
+const chatContainer = document.getElementById("chatContainer");
 
-• Comunicação com a API
-• Renderização das mensagens
-• Streaming
-• Markdown
-• Highlight.js
-• Upload de arquivos
-• Histórico
-• Controle da interface
+/******************************************************************************
+ * Templates
+ ******************************************************************************/
 
-===============================================================================
-*/
+const userTemplate = document.getElementById("userMessageTemplate");
+const assistantTemplate = document.getElementById("assistantMessageTemplate");
+const thinkingTemplate = document.getElementById("thinkingTemplate");
 
+let thinkingNode = null;
 
-/* =============================================================================
-   API
-============================================================================= */
+const sendButton = document.getElementById("sendButton");
 
-class VersaAPI {
+/******************************************************************************
+ * Inicialização
+ ******************************************************************************/
 
-    constructor(baseUrl = "") {
+hideThinking();
 
-        this.baseUrl = baseUrl;
+input.focus();
 
-    }
+/******************************************************************************
+ * Eventos
+ ******************************************************************************/
 
-    async chat(message, signal = null) {
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
 
-        const response = await fetch(
+  sendMessage();
+});
 
-            `${this.baseUrl}/chat`,
+input.addEventListener("keydown", function (e) {
+  if (e.key === "Enter" && !e.shiftKey) {
+    e.preventDefault();
 
-            {
+    sendMessage();
+  }
+});
 
-                method: "POST",
+/******************************************************************************
+ * Envio
+ ******************************************************************************/
 
-                headers: {
+async function sendMessage() {
+  const message = input.value.trim();
 
-                    "Content-Type": "application/json"
+  if (message === "") return;
 
-                },
+  showChat();
 
-                body: JSON.stringify({
+  addMessage("user", message);
 
-                    message
+  input.value = "";
 
-                }),
+  showThinking();
 
-                signal
+  disableInput();
 
-            }
+  try {
+    const response = await fetch("/chat", {
+      method: "POST",
 
-        );
+      headers: {
+        "Content-Type": "application/json",
+      },
 
-        if (!response.ok) {
+      body: JSON.stringify({
+        message: message,
+      }),
+    });
 
-            throw new Error(
+    if (!response.ok) throw new Error("Erro ao acessar a API.");
 
-                "Erro ao consultar a IA."
+    const json = await response.json();
 
-            );
+    hideThinking();
 
-        }
+    addMessage("assistant", json.response);
+  } catch (error) {
+    hideThinking();
 
-        return await response.json();
+    addMessage("assistant", "Erro: " + error.message);
+  }
 
-    }
-
+  enableInput();
 }
 
+/******************************************************************************
+ * Interface
+ ******************************************************************************/
 
-/* =============================================================================
-   CHAT
-============================================================================= */
+function showChat() {
+  hero.style.display = "fade-out";
 
-class VersaChat {
+  chat.style.display = "block";
+}
 
-    constructor() {
+function showThinking() {
+  if (thinkingNode) return;
 
-        /* Estado */
+  thinkingNode = thinkingTemplate.content.cloneNode(true);
 
-        this.api = new VersaAPI();
+  chatContainer.appendChild(thinkingNode);
 
-        this.abortController = null;
+  scrollBottom();
+}
 
-        this.isWaiting = false;
+function hideThinking() {
+  const node = chatContainer.querySelector(".thinking-message");
 
-        this.attachments = [];
+  if (node) node.remove();
 
-        /* Inicialização */
+  thinkingNode = null;
+}
 
-        this.cacheDOM();
+function disableInput() {
+  input.disabled = true;
 
-        this.bindEvents();
+  sendButton.disabled = true;
+}
 
-        this.initialize();
+function enableInput() {
+  input.disabled = false;
 
-    }
+  sendButton.disabled = false;
 
-    /* =========================================================================
-       CACHE DOM
-    ========================================================================= */
+  input.focus();
+}
 
-    cacheDOM() {
+function scrollBottom() {
+  window.scrollTo({
+    top: document.body.scrollHeight,
 
-        /* Layout */
+    behavior: "smooth",
+  });
+}
 
-        this.hero =
-            document.getElementById("hero");
+/******************************************************************************
+ * Mensagens
+ ******************************************************************************/
 
-        this.chat =
-            document.getElementById("chat");
+function addMessage(role, text) {
+  const template = role === "user" ? userTemplate : assistantTemplate;
 
-        this.chatContainer =
-            document.getElementById("chatContainer");
+  const fragment = template.content.cloneNode(true);
 
-        this.thinking =
-            document.getElementById("thinking");
+  const bubble = fragment.querySelector(".message-bubble");
 
-        /* Composer */
+  if (!bubble) {
+    console.error("Template inválido:", template.id);
+    return;
+  }
 
-        this.chatForm =
-            document.getElementById("chatForm");
+  bubble.textContent = text;
 
-        this.promptInput =
-            document.getElementById("promptInput");
+  chatContainer.appendChild(fragment);
 
-        this.sendButton =
-            document.getElementById("sendButton");
+  scrollBottom();
+}
 
-        this.stopButton =
-            document.getElementById("stopButton");
+/******************************************************************************
+ * Utilidades
+ ******************************************************************************/
 
-        this.attachButton =
-            document.getElementById("attachButton");
+function escapeHtml(text) {
+  return text
 
-        this.fileInput =
-            document.getElementById("fileInput");
+    .replace(/&/g, "&amp;")
 
-        this.attachmentList =
-            document.getElementById("attachmentList");
+    .replace(/</g, "&lt;")
 
-        /* Sidebar */
-
-        this.btnNewChat =
-            document.getElementById("btnNewChat");
-
-        this.sidebarNewChat =
-            document.getElementById("newChatButton");
-
-        /* Templates */
-
-        this.userTemplate =
-            document.getElementById("userMessageTemplate");
-
-        this.assistantTemplate =
-            document.getElementById("assistantMessageTemplate");
-
-    }
-
-    /* =========================================================================
-       INITIALIZE
-    ========================================================================= */
-
-    initialize() {
-
-        this.hideThinking();
-
-        this.chat.classList.add("hidden");
-
-        this.hero.classList.remove("hidden");
-
-        this.autoResize();
-
-        this.promptInput.focus();
-
-    }
-
-    /* =========================================================================
-       EVENTS
-    ========================================================================= */
-
-    bindEvents() {
-
-        this.chatForm.addEventListener(
-
-            "submit",
-
-            (e) => {
-
-                e.preventDefault();
-
-                this.send();
-
-            }
-
-        );
-
-        this.promptInput.addEventListener(
-
-            "keydown",
-
-            (e) => {
-
-                if (
-
-                    e.key === "Enter"
-
-                    &&
-
-                    !e.shiftKey
-
-                ) {
-
-                    e.preventDefault();
-
-                    this.send();
-
-                }
-
-            }
-
-        );
-
-        this.promptInput.addEventListener(
-
-            "input",
-
-            () => this.autoResize()
-
-        );
-
-        this.btnNewChat?.addEventListener(
-
-            "click",
-
-            () => this.newChat()
-
-        );
-
-        this.sidebarNewChat?.addEventListener(
-
-            "click",
-
-            () => this.newChat()
-
-        );
-
-        this.stopButton?.addEventListener(
-
-            "click",
-
-            () => this.abort()
-
-        );
-
-    }
-
-    /* =========================================================================
-       NEW CHAT
-    ========================================================================= */
-
-    newChat() {
-
-        this.chatContainer.innerHTML = "";
-
-        this.promptInput.value = "";
-
-        this.attachments = [];
-
-        this.autoResize();
-
-        this.hideThinking();
-
-        this.hero.classList.remove(
-
-            "hidden"
-
-        );
-
-        this.chat.classList.add(
-
-            "hidden"
-
-        );
-
-        this.promptInput.focus();
-
-    }
-
-    /* =========================================================================
-       START CHAT
-    ========================================================================= */
-
-    startConversation() {
-
-        this.hero.classList.add(
-
-            "hidden"
-
-        );
-
-        this.chat.classList.remove(
-
-            "hidden"
-
-        );
-
-    }
-
-    /* =========================================================================
-       AUTO RESIZE
-    ========================================================================= */
-
-    autoResize() {
-
-        this.promptInput.style.height =
-
-            "auto";
-
-        this.promptInput.style.height =
-
-            this.promptInput.scrollHeight + "px";
-
-    }
+    .replace(/>/g, "&gt;");
+}
